@@ -1,12 +1,13 @@
-Name: <Your Name>
+Name: All group members
 
 What have you done since yesterday?
-	- <What you have done>
+    - No work done since yesterday
 
 What are you planning on doing today?
-	- <What you plan on doing 1...>
-    - <What you plan on doing 2...>
-    - <What you plan on doing 3...>
+    - Have our first meeting during tutorial
+    - Create a Github Repository for the project
+    - Create a Jira project
+    - Find a way to collaborate on interface design
 
 Any impediments or stumbling blocks?
 	- None
