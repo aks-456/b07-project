@@ -1,0 +1,75 @@
+Name: Kevin
+
+What have you done since yesterday?
+    - Had the first meeting with the team
+    - Created a GitHub repository for the project
+    - Created a Jira Project
+    - Created project on Figma, a software to collaborate on interface design
+
+What are you planning on doing today?
+    - Start the design for user story 3 on Figma, which is the page to display course timelines. 
+
+Any impediments or stumbling blocks?
+	- None
+  
+  
+Name: Dhruvin
+
+What have you done since yesterday?
+    - Had the first meeting with the team
+    - Created a GitHub repository for the project
+    - Created a Jira Project
+    - Created project on Figma, a software to collaborate on interface design
+
+What are you planning on doing today?
+    - Start the design for user story 1 on Figma, which is the register/sign up page for users.
+
+Any impediments or stumbling blocks?
+	- None
+  
+  
+Name: Angelina
+
+What have you done since yesterday?
+    - Had the first meeting with the team
+    - Created a GitHub repository for the project
+    - Created a Jira Project
+    - Created project on Figma, a software to collaborate on interface design
+
+What are you planning on doing today?
+    - Start the design for user story 2 on Figma, to show users what courses they have already taken, and add to the list of courses. 
+
+Any impediments or stumbling blocks?
+	- None
+  
+  
+Name: Aahil
+
+What have you done since yesterday?
+    - Had the first meeting with the team
+    - Created a GitHub repository for the project
+    - Created a Jira Project
+    - Created project on Figma, a software to collaborate on interface design
+
+What are you planning on doing today?
+    - Start the design for user story 5 on Figma, so admins can add a course and define details about it. 
+
+Any impediments or stumbling blocks?
+	- None
+  
+  
+ Name: Akshath
+
+What have you done since yesterday?
+    - Had the first meeting with the team
+    - Created a GitHub repository for the project
+    - Created a Jira Project
+    - Created project on Figma, a software to collaborate on interface design
+
+What are you planning on doing today?
+    - Create a firebase project and enable authentication and realtime database, and register our Android app in firebase. 
+
+Any impediments or stumbling blocks?
+	- None
+  
+  
