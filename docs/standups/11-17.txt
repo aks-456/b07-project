@@ -1,0 +1,58 @@
+Name: Kevin
+
+What have you done since yesterday?
+    - Started the design for the page for user story 3 on Figma, which displays course timelines. 
+
+What are you planning on doing today?
+- Nothing, because of CSCB36 Term Test
+
+Any impediments or stumbling blocks?
+	- CSCB36 Term test
+  
+  
+Name: Dhruvin
+
+What have you done since yesterday?
+      - Started the design for user story 1 on Figma, which is to allow users to register/sign up.
+
+What are you planning on doing today?
+- Nothing, because of CSCB36 Term Test
+
+Any impediments or stumbling blocks?
+	- CSCB36 Term test
+  
+  
+Name: Angelina
+
+What have you done since yesterday?
+    - Started the design for user story 2 on Figma, to show users what courses they have already taken, and add to the list of courses. 
+
+What are you planning on doing today?
+- Nothing, because of CSCB36 Term Test
+
+Any impediments or stumbling blocks?
+	- CSCB36 Term test
+  
+  
+Name: Aahil
+
+What have you done since yesterday?
+    - Started the design for the page on user story 5 on Figma, so admin accounts can add courses and enter/define details about it. 
+
+What are you planning on doing today?
+- Nothing, because of CSCB36 Term Test
+
+Any impediments or stumbling blocks?
+	- CSCB36 Term test
+  
+  
+ Name: Akshath
+
+What have you done since yesterday?
+    - Created a firebase project and enabled authentication and the realtime database, as well as register an Android app in firebase. 
+
+What are you planning on doing today?
+- Nothing, because of CSCB36 Term Test
+
+Any impediments or stumbling blocks?
+	- CSCB36 Term test
