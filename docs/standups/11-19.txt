@@ -1,1 +1,59 @@
+Name: Dhruvin
 
+What have you done since yesterday?
+- No progress made due to b36
+
+What are you planning on doing today?
+-Today I plan on working and completing a landing page (login page)
+for the project. 
+
+Any impediments or stumbling blocks?
+    - None so far
+
+
+Name: Anqi 
+
+What have you done since yesterday?
+- No progress 
+
+What are you planning on doing today?
+-Today I plan on optimizing ui for the second user stories on figma and start working on the ui with android studio
+
+Any impediments or stumbling blocks?
+    - None so far
+
+
+Name: Kevin 
+
+What have you done since yesterday?
+    - No progress
+
+What are you planning on doing today?
+    - Finishing the user story 3 design
+
+Any impediments or stumbling blocks?
+    - None
+    
+    
+Name: Akshath
+
+What have you done since yesterday?
+    - No progress
+
+What are you planning on doing today?
+    - Start working on the design for user story 6, to allow the admin to view and update or delete any course they have added
+
+Any impediments or stumbling blocks?
+    - None
+    
+    
+Name: Aahil
+
+What have you done since yesterday?
+    - No progress
+
+What are you planning on doing today?
+    - Continue working on the design for user story 5
+
+Any impediments or stumbling blocks?
+    - None 
