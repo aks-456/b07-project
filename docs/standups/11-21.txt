@@ -1,0 +1,58 @@
+Name: Dhruvin
+
+What have you done since yesterday?
+- I worked on a landing page (login page) for the project. 
+
+What are you planning on doing today?
+- Nothing because of B52 Term Test
+
+Any impediments or stumbling blocks?
+    - None so far
+
+
+Name: Anqi 
+
+What have you done since yesterday?
+-optimized ui for the second user stories on figma and started working on the xml version
+
+What are you planning on doing today?
+- Nothing because of B52 Term Test
+
+Any impediments or stumbling blocks?
+    - None so far
+
+
+Name: Kevin 
+
+What have you done since yesterday?
+- Worked on the user story 3 design
+
+What are you planning on doing today?
+- Nothing because of B52 Term Test
+
+Any impediments or stumbling blocks?
+    - None
+    
+    
+Name: Akshath
+
+What have you done since yesterday?
+- Started the design for user story 6
+
+What are you planning on doing today?
+- Nothing because of B52 Term Test
+
+Any impediments or stumbling blocks?
+    - None
+    
+    
+Name: Aahil
+
+What have you done since yesterday?
+- worked on the design for user story 5
+
+What are you planning on doing today?
+- Nothing because of B52 Term Test
+
+Any impediments or stumbling blocks?
+    - None 
