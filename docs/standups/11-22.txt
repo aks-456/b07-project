@@ -1,0 +1,58 @@
+Name: Dhruvin
+
+What have you done since yesterday?
+- Nothing because of B52 Term Test
+
+What are you planning on doing today?
+- Start working on basic reading and writing functionality for the user login system (user story 1)
+
+Any impediments or stumbling blocks?
+    - None so far
+
+
+Name: Anqi 
+
+What have you done since yesterday?
+- Nothing because of B52 Term Test
+
+What are you planning on doing today?
+- Start working on the basic functionality to write to the realtime db, to allow users to add the courses they have already taken (user story 2). 
+
+Any impediments or stumbling blocks?
+    - None so far
+
+
+Name: Kevin 
+
+What have you done since yesterday?
+- Nothing because of B52 Term Test
+
+What are you planning on doing today?
+- Start working on the basic functionality to read from the realtime db, to display the courses that have been generated for the course timeline (user story 3). 
+
+Any impediments or stumbling blocks?
+    - None
+    
+    
+Name: Akshath
+
+What have you done since yesterday?
+- Nothing because of B52 Term Test
+
+What are you planning on doing today?
+- Start working on the basic functionality to read from the realtime db, to allow users to view the courses they have taken (user story 2). 
+
+Any impediments or stumbling blocks?
+    - None
+    
+    
+Name: Aahil
+
+What have you done since yesterday?
+    - Finished user story 5 design
+
+What are you planning on doing today?
+    - Start working on basic reading and writing functionality for the user registration system (user story 1)
+
+Any impediments or stumbling blocks?
+    - None 
