@@ -25,18 +25,11 @@ public class AddCourseAdmin extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        etCourseName = new EditText(this);
-        etCourseCode = new EditText(this);
-        etCourseOfferings = new EditText(this);
-        etPrerequisites = new EditText(this);
-        btnAddCourse = new Button(this);
-
-
-        etCourseName.setId(R.id.etCourseName);
-        etCourseCode.setId(R.id.etCourseCode);
-        etCourseOfferings.setId(R.id.etCourseOfferings);
-        etPrerequisites.setId(R.id.etPrerequisities);
-        btnAddCourse.setId(R.id.btnAddCourse);
+        etCourseName = findViewById(R.id.etCourseName);
+        etCourseCode = findViewById(R.id.etCourseCode);
+        etCourseOfferings = findViewById(R.id.etCourseOfferings);
+        etPrerequisites = findViewById(R.id.etPrerequisities);
+        btnAddCourse = findViewById(R.id.btnAddCourse);
 
 
         btnAddCourse.setOnClickListener(new View.OnClickListener() {
