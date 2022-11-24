@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">B07Project</string>
+    <string name="add_course">Add Course</string>
+    <string name="course_name">Course Name</string>
 </resources>
