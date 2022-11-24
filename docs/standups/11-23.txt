@@ -1,0 +1,60 @@
+Name: Kevin 
+
+What have you done since yesterday?
+    - Finished the design for user story 3
+
+What are you planning on doing today?
+    - Start working on the code implementation
+    - More specifically, implementation on reading and writing from the real time firebase.
+
+Any impediments or stumbling blocks?
+    - None
+
+
+Name: Dhruvin
+
+What have you done since yesterday?
+- finished the layout for the login page
+
+What are you planning on doing today?
+-Today I plan on starting coding the actual project on android studio and partioning my work so I can work on it at a steady pace
+
+Any impediments or stumbling blocks?
+    - None so far 
+
+
+Name: Akshath
+
+What have you done since yesterday?
+- Finished the basic screen layout for user story 5
+
+What are you planning on doing today?
+-Start working on allowing admins to add a course and write it to the database (writing to database for user story 5)
+
+Any impediments or stumbling blocks?
+    - None so far 
+    
+    
+Name: Aahil
+
+What have you done since yesterday?
+- finished the basic screen layout for the register page
+
+What are you planning on doing today?
+- Start on user registration using firebase authentication, allowing users to register an account (user story 1)
+
+Any impediments or stumbling blocks?
+    - None so far 
+
+
+Name: Anqi
+
+What have you done since yesterday?
+- finished the basic screen layout for user story 2
+
+What are you planning on doing today?
+- Start to write to the realtime db, to allow users to add the courses they have already taken (user story 2). 
+
+Any impediments or stumbling blocks?
+    - None so far 
+
