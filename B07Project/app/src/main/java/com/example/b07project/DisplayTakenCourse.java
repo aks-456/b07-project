@@ -1,12 +1,7 @@
 package com.example.b07project;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-
-import java.util.ArrayList;
 
 public class DisplayTakenCourse extends AppCompatActivity {
     //this list is going to hold all the taken courses
