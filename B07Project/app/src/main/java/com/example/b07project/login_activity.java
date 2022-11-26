@@ -23,31 +23,43 @@ public class login_activity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     EditText text_email, text_password;
     Button text_signup;
+    Button text_signuppage;
     private static final String TAG = "EmailPassword";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
          text_email = findViewById(R.id.editTextTextEmailAddress);
          text_password = findViewById(R.id.editTextTextPassword);
          text_signup = findViewById(R.id.activity_switcher_button);
-        mAuth = FirebaseAuth.getInstance();
+        text_signuppage = (Button)findViewById(R.id.toSignUp);
+         mAuth = FirebaseAuth.getInstance();
 
-text_signup.setOnClickListener(new View.OnClickListener(){
+    text_signuppage.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+        Intent intent = new Intent(login_activity.this, MainActivity.class); //CHANGE TO THE AHIL's REGISTRATION PAGE
+            startActivity(intent);
+        }
+    });
+    text_signup.setOnClickListener(new View.OnClickListener(){
     @Override
     public void onClick(View v){
         String email = text_email.getText().toString();
         String password = text_password.getText().toString();
         if(TextUtils.isEmpty(email))
         {
-            text_email.setError("Please Enter Email");
+            text_email.setError("Email Cannot Be Empty");
             return;
         }
         if(TextUtils.isEmpty(password))
         {
-            text_email.setError("Please Enter Password");
+            text_password.setError("Password Cannot Be Empty");
             return;
+        }
+        if(password.length() < 6)
+        {
+            text_password.setError("Password must be of atleast length 6");
         }
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(login_activity.this, new OnCompleteListener<AuthResult>() {
