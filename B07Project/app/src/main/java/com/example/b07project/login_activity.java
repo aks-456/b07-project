@@ -3,8 +3,13 @@ package com.example.b07project;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,21 +21,39 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class login_activity extends AppCompatActivity {
     private FirebaseAuth mAuth;
+    EditText text_email, text_password;
+    Button text_signup;
     private static final String TAG = "EmailPassword";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+         text_email = findViewById(R.id.editTextTextEmailAddress);
+         text_password = findViewById(R.id.editTextTextPassword);
+         text_signup = findViewById(R.id.activity_switcher_button);
         mAuth = FirebaseAuth.getInstance();
 
-        TextView email = (TextView) findViewById(R.id.editTextTextEmailAddress);
-        TextView password = (TextView) findViewById(R.id.editTextTextPassword);
-
-        mAuth.signInWithEmailAndPassword(email.toString(), password.toString())
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+text_signup.setOnClickListener(new View.OnClickListener(){
+    @Override
+    public void onClick(View v){
+        String email = text_email.getText().toString();
+        String password = text_password.getText().toString();
+        if(TextUtils.isEmpty(email))
+        {
+            text_email.setError("Please Enter Email");
+            return;
+        }
+        if(TextUtils.isEmpty(password))
+        {
+            text_email.setError("Please Enter Password");
+            return;
+        }
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(login_activity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
@@ -45,10 +68,10 @@ public class login_activity extends AppCompatActivity {
                         }
                     }
                 });
-
     }
-
-    private void updateUI(Object o) {
+});
+    }
+    private void updateUI(FirebaseUser user){
     }
 
 
@@ -58,11 +81,13 @@ public class login_activity extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            reload();
+           reload();
         }
     }
 
     private void reload() {
+//        Intent intent = new Intent(login_activity.this, MainActivity.class); //CHANGE TO THE HOMEPAGE
+//        startActivity(intent);
     }
 
 }
