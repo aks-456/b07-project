@@ -68,6 +68,7 @@ public class login_activity extends AppCompatActivity {
         if(password.length() < 6)
         {
             text_password.setError("Password must be of atleast length 6");
+            return;
         }
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(login_activity.this, new OnCompleteListener<AuthResult>() {
@@ -92,6 +93,8 @@ public class login_activity extends AppCompatActivity {
 });
     }
     private void updateUI(FirebaseUser user){
+        Toast.makeText(login_activity.this, "Verification Successful",
+                Toast.LENGTH_SHORT).show();
     }
 
 
