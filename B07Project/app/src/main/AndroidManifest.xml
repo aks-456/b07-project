@@ -10,6 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.B07Project">
         <activity
+            android:name=".admin_or_student"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".login_activity"
             android:exported="false">
             <meta-data

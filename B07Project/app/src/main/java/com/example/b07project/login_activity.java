@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +23,7 @@ public class login_activity extends AppCompatActivity {
     EditText text_email, text_password;
     Button text_signup;
     Button text_signuppage;
+    Button text_back;
     private static final String TAG = "EmailPassword";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +31,18 @@ public class login_activity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
          text_email = findViewById(R.id.editTextTextEmailAddress);
          text_password = findViewById(R.id.editTextTextPassword);
-         text_signup = findViewById(R.id.activity_switcher_button);
+         text_signup = (Button)findViewById(R.id.activity_switcher_button);
+         text_back = (Button) findViewById(R.id.back_button);
         text_signuppage = (Button)findViewById(R.id.toSignUp);
          mAuth = FirebaseAuth.getInstance();
 
+         text_back.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 Intent intent = new Intent(login_activity.this, admin_or_student.class); //CHANGE TO THE AHIL's REGISTRATION PAGE
+                 startActivity(intent);
+             }
+         });
     text_signuppage.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
