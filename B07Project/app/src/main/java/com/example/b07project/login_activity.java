@@ -46,7 +46,7 @@ public class login_activity extends AppCompatActivity {
     text_signuppage.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-        Intent intent = new Intent(login_activity.this, MainActivity.class); //CHANGE TO THE AHIL's REGISTRATION PAGE
+        Intent intent = new Intent(login_activity.this, admin_or_student.class); //CHANGE TO THE AHIL's REGISTRATION PAGE
             startActivity(intent);
         }
     });
