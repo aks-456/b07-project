@@ -39,7 +39,7 @@ public class login_activity extends AppCompatActivity {
          text_back.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                 Intent intent = new Intent(login_activity.this, admin_or_student.class); //CHANGE TO THE AHIL's REGISTRATION PAGE
+                 Intent intent = new Intent(login_activity.this, admin_or_student.class);
                  startActivity(intent);
              }
          });
@@ -93,8 +93,12 @@ public class login_activity extends AppCompatActivity {
 });
     }
     private void updateUI(FirebaseUser user){
-        Toast.makeText(login_activity.this, "Verification Successful",
-                Toast.LENGTH_SHORT).show();
+        if(user != null) {
+            Toast.makeText(login_activity.this, "Verification Successful",
+                    Toast.LENGTH_SHORT).show();
+
+        }
+        return;
     }
 
 
