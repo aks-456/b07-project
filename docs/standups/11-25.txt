@@ -1,0 +1,55 @@
+Name: Dhruvin
+
+What have you done since yesterday?
+- Finished creating the template for the login/register
+
+What are you planning on doing today?
+-I plan on finishing the authentication code so that a user can sign-in using the database 
+
+Any impediments or stumbling blocks?
+    - None so far
+
+
+Name: Anqi 
+
+What have you done since yesterday?
+- fixed error for not being able to create new activity on file pulled
+What are you planning on doing today?
+-transferred code from local repo and commit to my branch & start working on reading from firebase
+Any impediments or stumbling blocks?
+    - issue with configuration
+
+
+Name: Kevin 
+
+What have you done since yesterday?
+    - Finished the layout
+What are you planning on doing today?
+    - Link to database, and add user authentication
+    - Get user id and add future courses to corresponding user
+
+Any impediments or stumbling blocks?
+    - None
+
+
+Name: Aahil
+
+What have you done since yesterday?
+    - Worked on implementing layout of registration page and connecting main and registration activities (user story 1)
+
+What are you planning on doing today?
+    - Try to finish implementing layout of registration page and connecting main and registration activities, and fix some errors which I encountered (user story 1)
+
+Any impediments or stumbling blocks?
+    - None
+    
+Name: Akshath
+
+What have you done since yesterday?
+    - I was able to fix some errors I ran into a day ago
+
+What are you planning on doing today?
+    - Not much work because of 2 quizzes today from my other courses. I plan to make up for this on the weekend. 
+
+Any impediments or stumbling blocks?
+    - None

@@ -1,12 +1,22 @@
 <resources>
     <string name="app_name">B07Project</string>
-    <string name="title_activity_register">RegisterActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="welcome">Welcome!</string>
+    <string name="sign_up">Sign - Up</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="loginView">Login</string>
+    <string name="continue_as">Continue As:</string>
+    <string name="student_button">Student</string>
+    <string name="admin_button">Admin</string>
+    <string name="sign_up_button">Sign Up?</string>
+    <string name="dont_have_an_account">Dont Have An Account?</string>
     <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="back_button">Back</string>
+    <string name="select">Select</string>
+    <string name="or">Or</string>
+    <string name="registration_page">Registration Page</string>
+    <string name="email_registration">Email</string>
+    <string name="password_registration">Password</string>
+    <string name="register_registration">Register</string>
 </resources>
