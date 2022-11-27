@@ -15,4 +15,8 @@
     <string name="back_button">Back</string>
     <string name="select">Select</string>
     <string name="or">Or</string>
+    <string name="registration_page">Registration Page</string>
+    <string name="email_registration">Email</string>
+    <string name="password_registration">Password</string>
+    <string name="register_registration">Register</string>
 </resources>
