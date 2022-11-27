@@ -39,7 +39,7 @@ public class login_activity extends AppCompatActivity {
          text_back.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                 Intent intent = new Intent(login_activity.this, admin_or_student.class);
+                 Intent intent = new Intent(login_activity.this, RegisterActivity.class);
                  startActivity(intent);
              }
          });
