@@ -32,17 +32,8 @@ public class login_activity extends AppCompatActivity {
          text_email = findViewById(R.id.editTextTextEmailAddress);
          text_password = findViewById(R.id.editTextTextPassword);
          text_signup = (Button)findViewById(R.id.activity_switcher_button);
-         text_back = (Button) findViewById(R.id.back_button);
         text_signuppage = (Button)findViewById(R.id.toSignUp);
          mAuth = FirebaseAuth.getInstance();
-
-         text_back.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View view) {
-                 Intent intent = new Intent(login_activity.this, RegisterActivity.class);
-                 startActivity(intent);
-             }
-         });
     text_signuppage.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
