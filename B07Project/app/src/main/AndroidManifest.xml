@@ -10,14 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.B07Project">
         <activity
+<<<<<<< Updated upstream
             android:name=".RegisterActivity"
+=======
+            android:name=".GenerateCourseStudent"
+>>>>>>> Stashed changes
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
+<<<<<<< Updated upstream
             android:name=".admin_or_student"
+=======
+            android:name=".MainActivity"
+>>>>>>> Stashed changes
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
