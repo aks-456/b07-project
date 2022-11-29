@@ -112,4 +112,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/activity_switcher_button"
         app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/to_delete_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete a Course"
+        app:layout_constraintBottom_toTopOf="@+id/LoginInView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

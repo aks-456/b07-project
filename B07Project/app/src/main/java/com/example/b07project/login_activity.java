@@ -36,6 +36,16 @@ public class login_activity extends AppCompatActivity {
         text_signuppage = (Button)findViewById(R.id.toSignUp);
          mAuth = FirebaseAuth.getInstance();
 
+         // New code
+         Button toDeleteButton = findViewById(R.id.to_delete_button);
+         toDeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent deleteIntent = new Intent(login_activity.this, EditCourseActivity.class);
+                startActivity(deleteIntent);
+            }
+         });
+
          text_back.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
