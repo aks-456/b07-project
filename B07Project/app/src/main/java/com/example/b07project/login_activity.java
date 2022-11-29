@@ -104,8 +104,8 @@ public class login_activity extends AppCompatActivity {
     }
 
     private void reload() {
-//        Intent intent = new Intent(login_activity.this, MainActivity.class); //CHANGE TO THE HOMEPAGE
-//        startActivity(intent);
+        Intent intent = new Intent(login_activity.this, EditCourses.class); //CHANGE TO THE HOMEPAGE
+        startActivity(intent);
     }
 
 }
