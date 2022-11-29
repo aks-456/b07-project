@@ -5,9 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Display_taken_course">
+<<<<<<< Updated upstream
 
     <TextView
         android:id="@+id/textView"
+=======
+    <TextView
+        android:id="@+id/dtc_title"
+>>>>>>> Stashed changes
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Display_taken_course_title"
@@ -20,6 +25,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.13" />
 
+<<<<<<< Updated upstream
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/TakenCourseRecyclerView"
         android:layout_width="319dp"
@@ -31,5 +37,18 @@
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.152" />
+=======
+    <ListView
+        android:layout_width="321dp"
+        android:layout_height="369dp"
+        android:id="@+id/takencrslist_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/dtc_title"
+        app:layout_constraintTop_toBottomOf="@+id/dtc_title"
+        app:layout_constraintVertical_bias="0.057" />
+
+>>>>>>> Stashed changes
 
 </androidx.constraintlayout.widget.ConstraintLayout>
