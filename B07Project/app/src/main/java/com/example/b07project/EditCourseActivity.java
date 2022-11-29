@@ -8,8 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
@@ -29,20 +32,18 @@ public class EditCourseActivity extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         courseCodeBox = findViewById(R.id.editTextCourseCode);
-        offeringSessionBox = findViewById(R.id.editTextOfferingSession);
 
         deleteButton = findViewById(R.id.delete_course_button);
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String courseCode = courseCodeBox.getText().toString().trim();
-                String offeringSession = offeringSessionBox.getText().toString().trim();
-                deleteCourse(courseCode, offeringSession);
+                deleteCourse(courseCode);
             }
         });
     }
 
-    private void deleteCourse(String courseCode, String offeringSession) {
+    private void deleteCourse(String courseCode) {
         mDatabase.child("admin_courses").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -50,11 +51,19 @@ public class EditCourseActivity extends AppCompatActivity {
                     Log.e("firebase", "Error getting data", task.getException());
                 }
                 else {
-                    mDatabase.child("admin_courses").child(courseCode).removeValue();
-                    //for (DataSnapshot ds: task.getResult().getChildren()) {
-
-                    //}
-                    //Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                    mDatabase.child("admin_courses").child(courseCode).removeValue()
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(EditCourseActivity.this, "Course Deleted Successfully", Toast.LENGTH_LONG).show();
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(EditCourseActivity.this, "Something's Wrong", Toast.LENGTH_LONG).show();
+                                    }
+                            });
+                    //for (DataSnapshot ds: task.getResult().getChildren())
                 }
             }
         });
