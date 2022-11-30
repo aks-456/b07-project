@@ -30,6 +30,7 @@ What have you done since yesterday?
 
 What are you planning on doing today?
 -Start working on allowing admins to add a course and write it to the database (writing to database for user story 5)
+- Also, I plan on initiating our first sprint, and have different members tackle different tasks that are organized by user story on Jira, and broken down further into sub tasks. 
 
 Any impediments or stumbling blocks?
     - None so far 

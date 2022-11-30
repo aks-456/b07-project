@@ -1,0 +1,60 @@
+Name: Dhruvin
+
+What have you done since yesterday?
+- Finishing  reading from the database in a clean format
+
+What are you planning on doing today?
+-continue working on creating the list view for the courses
+
+Any impediments or stumbling blocks?
+    - None so far 
+
+
+Name: Akshath
+
+What have you done since yesterday?
+- Finished user story 5 (apart from minor changes in the future).
+- Started working on user story 2 and the layout
+
+What are you planning on doing today?
+- Finish the layout for user story 2 and work on allowing users to add to the list of taken courses 
+
+Any impediments or stumbling blocks?
+    - Not fully decided on whether or not to include dropdown for the list of all courses for a user to choose from when adding to the list. 
+    
+    
+Name: Anqi 
+
+What have you done since yesterday?
+- trying to turn xml to reading from firebase for user story 2
+
+What are you planning on doing today?
+-complete reading from firebase for user story 2
+
+Any impediments or stumbling blocks?
+    - issue with gradles and recycler view
+
+
+Name: Aahil
+
+What have you done since yesterday?
+    - Implemented functionality to allow admin to delete courses (user story 6)
+
+What are you planning on doing today?
+    - Modify delete course functionality so that if a course is deleted, then the deleted course is also deleted from the prerequisites list of the parent course (user story 6)
+
+Any impediments or stumbling blocks?
+    - None
+    
+    
+Name: Kevin 
+
+What have you done since yesterday?
+    - Finished the drop down, and added a new button and text to show course list before confirming.
+
+What are you planning on doing today?
+    - Add a checkbox for admin sign up
+    - Add an admin-tag for the admins in the database
+
+Any impediments or stumbling blocks?
+    - None

@@ -1,0 +1,63 @@
+Name: Aahil
+
+What have you done since yesterday?
+    - Updated registration page to prompt user if they enter invalid login info and added minor cosmetic changes to align with theme of login page
+    - Started working on deleting courses functionality for admins 
+
+What are you planning on doing today?
+    - Continue working on deleting courses functionality for admins (user story 6)
+
+Any impediments or stumbling blocks?
+    - None
+
+
+Name: Kevin 
+
+What have you done since yesterday?
+    - Reorganized the database structure, now use uid.
+    
+What are you planning on doing today?
+    - Figure out how to do drop downs
+    - Figure out how identify admins from the students.
+
+Any impediments or stumbling blocks?
+    - None
+    
+    
+Name: Dhruvin
+
+What have you done since yesterday?
+- Working on creating a page for admin that allows editing of courses
+
+What are you planning on doing today?
+-continue working on the page for the admin. Try completing the courses that are avaliable in a list view format
+
+Any impediments or stumbling blocks?
+    - None so far 
+    
+    
+Name: Anqi
+
+What have you done since yesterday?
+- transferred code from local repo and commit to my branch & start working on reading from firebase
+- Worked on reading data from firebase but ran into multiple errors
+
+What are you planning on doing today?
+-continue working on reading from firebase for user story 2, and solve all the errors that I was getting. 
+
+Any impediments or stumbling blocks?
+    - None so far 
+    
+    
+Name: Akshath
+
+What have you done since yesterday?
+- Added an option for a dropdown for admins to read all the courses added by the admin in the realtime db, and select prerequisite courses when adding a new course
+- Changed how I store data. Instead of storing courses under the id of the admin user, I disregarded the user who created the courses and stored them all together
+
+What are you planning on doing today?
+- Work on user story 2 to allow the user to add courses they've already taken
+- I plan on initiating our second sprint, where we work on the remaining user stories (mainly 2, 4, 6) as well as any remaining tasks that are incomplete from the first sprint
+
+Any impediments or stumbling blocks?
+    - None so far

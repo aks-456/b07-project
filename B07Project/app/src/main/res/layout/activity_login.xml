@@ -66,10 +66,9 @@
         android:text="@string/next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.634"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
-        app:layout_constraintVertical_bias="0.136" />
+        app:layout_constraintVertical_bias="0.134" />
 
     <Button
         android:id="@+id/toSignUp"
@@ -98,29 +97,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toSignUp"
         app:layout_constraintVertical_bias="0.517" />
-
-    <Button
-        android:id="@+id/back_button"
-        android:layout_width="75dp"
-        android:layout_height="wrap_content"
-        android:background="#00FFFFFF"
-        android:text="@string/back_button"
-        android:textColor="#673AB7"
-        app:layout_constraintBottom_toBottomOf="@+id/activity_switcher_button"
-        app:layout_constraintEnd_toStartOf="@+id/activity_switcher_button"
-        app:layout_constraintHorizontal_bias="0.87"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/activity_switcher_button"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/to_delete_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete a Course"
-        app:layout_constraintBottom_toTopOf="@+id/LoginInView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
