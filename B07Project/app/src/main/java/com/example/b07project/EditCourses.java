@@ -60,9 +60,7 @@ public class EditCourses extends AppCompatActivity {
                         arr.add(key);
                     }
                     listView.setAdapter(arr2);
-
                 }
-
             }
         });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -89,6 +87,7 @@ public class EditCourses extends AppCompatActivity {
 
             }
             private void deleteCourse(String courseCode) {
+
                 database.child("admin_courses").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -96,6 +95,24 @@ public class EditCourses extends AppCompatActivity {
                             Log.e("firebase", "Error getting data", task.getException());
                         }
                         else {
+                            for (DataSnapshot ds: task.getResult().getChildren()) {
+                                String[] prereqs = task.getResult().child(ds.getKey()).child("prerequisites").getValue().toString().split(",");
+                                int i = 0;
+                                boolean courseInList = false;
+                                while (i < prereqs.length && !courseInList) {
+                                    if (prereqs[i].equals(courseCode)) {
+                                        courseInList = true;
+                                        String newPrereqs = "";
+                                        for (int j = 0; j < prereqs.length; j++) {
+                                            if (j != i) {
+                                                newPrereqs += prereqs[j] + ",";
+                                            }
+                                        }
+                                        database.child("admin_courses").child(ds.getKey()).child("prerequisites").setValue(newPrereqs.substring(0, newPrereqs.length()-1));
+                                    }
+                                    i++;
+                                }
+                            }
                             database.child("admin_courses").child(courseCode).removeValue()
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
@@ -108,7 +125,6 @@ public class EditCourses extends AppCompatActivity {
                                             Toast.makeText(EditCourses.this, "Something's Wrong", Toast.LENGTH_LONG).show();
                                         }
                                     });
-                            //for (DataSnapshot ds: task.getResult().getChildren())
                         }
                     }
                 });
