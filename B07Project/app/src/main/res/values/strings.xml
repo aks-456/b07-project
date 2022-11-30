@@ -22,4 +22,10 @@
     <string name="back_course_button">Back</string>
     <string name="edit_courses_button">Edit</string>
     <string name="delete">Delete</string>
+    <string name="admin_homepage">Admin Homepage</string>
+    <string name="Add_courses_button">Button</string>
+    <string name="add_courses">Add Courses</string>
+    <string name="edit_courses">Edit Courses</string>
+    <string name="delete_courses">Delete Courses</string>
+    <string name="Back_button_edit_courses">Back</string>
 </resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminHomePage">
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="196dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_corner"
+        android:drawableLeft="@drawable/ic_baseline_edit_24"
+        android:text="@string/edit_courses"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.175" />
+
+    <TextView
+        android:id="@+id/admin_home_page_text"
+        android:layout_width="266dp"
+        android:layout_height="117dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/admin_homepage"
+        android:textAlignment="center"
+        android:textColor="@color/purple_500"
+        android:textSize="45sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.249" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="196dp"
+        android:layout_height="50dp"
+        android:drawableLeft="@drawable/img_add_button"
+        android:background="@drawable/rounded_corner"
+
+        android:text="@string/add_courses"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/admin_home_page_text"
+        app:layout_constraintVertical_bias="0.169" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

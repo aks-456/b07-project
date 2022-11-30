@@ -1,14 +1,14 @@
 package com.example.b07project;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
 import android.util.Log;
 import android.os.Bundle;
 import android.view.View;
@@ -23,40 +23,37 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import java.sql.DatabaseMetaData;
 import java.util.ArrayList;
-import java.util.Objects;
+import java.util.Arrays;
 
 public class EditCourses extends AppCompatActivity {
     ListView listView;
     ArrayList<String> arr = new ArrayList<>();
     private DatabaseReference database;
+    Button btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_courses);
         listView = (ListView)findViewById(R.id.list_view);
-
-        ArrayAdapter<String> arr2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arr);
+        btn = findViewById(R.id.button_to_go_back);
+        ArrayAdapter<String> arr2 = new ArrayAdapter<>(this, R.layout.textviewlayout, arr);
         database = FirebaseDatabase.getInstance().getReference();
 
         database.child("admin_courses").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
-                    Toast.makeText(EditCourses.this, "There are no courses added to select prerequisites, please enter them manually", Toast.LENGTH_LONG).show();
+                    Toast.makeText(EditCourses.this, "There Are No Courses Avalialbe", Toast.LENGTH_LONG).show();
                 }
                 else {
                     for(DataSnapshot ds : task.getResult().getChildren()) {
-                        Log.e("TAG", "hello");
-                        String key = ds.getKey();
+
+                        String key = "\n" + ds.child("name").getValue() + " "+ ds.getKey() + "\nOffered: " + ds.child("offerings").getValue() + "\nPrerequisites: " + ds.child("prerequisites").getValue() +"\n";
                         arr.add(key);
                     }
                     listView.setAdapter(arr2);
@@ -65,11 +62,17 @@ public class EditCourses extends AppCompatActivity {
 
             }
         });
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(EditCourses.this, AdminHomePage.class));
+            }
+        });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(EditCourses.this);
-                builder.setTitle("\t\t\t\tSelect");
+                builder.setTitle("Select");
                 builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         deleteCourse(arr.get(i));
@@ -80,6 +83,8 @@ public class EditCourses extends AppCompatActivity {
                 builder.setNegativeButton("Edit", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // Call edit func
+                        finish();
+                        startActivity(getIntent());
                     }
                 });
                 AlertDialog dialog = builder.create();
