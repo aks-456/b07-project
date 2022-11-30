@@ -19,4 +19,7 @@
     <string name="email_registration">Email</string>
     <string name="password_registration">Password</string>
     <string name="register_registration">Register</string>
+    <string name="back_course_button">Back</string>
+    <string name="edit_courses_button">Edit</string>
+    <string name="delete">Delete</string>
 </resources>
