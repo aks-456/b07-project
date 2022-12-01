@@ -16,7 +16,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GenerateTimeline extends AppCompatActivity {
@@ -40,44 +42,64 @@ public class GenerateTimeline extends AppCompatActivity {
 //        intent.putExtra("BUNDLE",args);
 //        startActivity(intent);
 
-        Intent intent = getIntent();
-        Bundle args = intent.getBundleExtra("BUNDLE");
-        ArrayList<String> courses = (ArrayList<String>) args.getSerializable("ARRAYLIST");
+//        Intent intent = getIntent();
+//        Bundle args = intent.getBundleExtra("BUNDLE");
+//        ArrayList<String> courses = (ArrayList<String>) args.getSerializable("ARRAYLIST");
 
-        ArrayAdapter<String> coursesAdapter = new ArrayAdapter<String>(GenerateTimeline.this, android.R.layout.simple_list_item_1, courses);
-        lvTimeline.setAdapter(coursesAdapter);
+        ArrayList<String> courses = new ArrayList<String>();
+        courses.add("CSCD01");
 
-        for(int i = 0; i < courses.size(); i++) {
-            String current_course = courses.get(i);
-            int j = 0;
-            while(j < 4) {
+        ArrayList<String> prereq_arr = new ArrayList<String>();
+        ArrayList<String> taken_courses = new ArrayList<String>();
 
-                mDatabase.child("admin_courses").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DataSnapshot> task) {
-                        if (!task.isSuccessful()) {
-                            Toast.makeText(GenerateTimeline.this, "There are no courses added to select prerequisites, please enter them manually", Toast.LENGTH_LONG).show();
-                        }
-                        else {
-                            for(DataSnapshot ds : task.getResult().getChildren()) {
-                                String key = ds.getKey();
-                                if(key.equals(current_course)) {
-                                    String prereq = ds.child("prerequisites").getValue().toString();
+        mDatabase.child("students").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Toast.makeText(GenerateTimeline.this, "There are no courses added to select prerequisites, please enter them manually", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    for(DataSnapshot ds : task.getResult().getChildren()) {
+                        String key = ds.getKey();
+                        //101 -- replace with current user
+                        if(key.equals("101")) {
 
-                                    Log.e("TAG", prereq);
-//                                    String prereq_arr []= prereq.split(",");
+                            String [] taken_arr = ds.child("taken_courses").getValue().toString().split(",");
+                            taken_courses.addAll(Arrays.asList(taken_arr));
 
-                                }
+                            for(int j = 0; j < taken_courses.size(); j++) {
+                                Log.e("RANDOM", taken_courses.get(j));
                             }
 
                         }
                     }
-                });
 
-                j++;
+                }
             }
+        });
 
-        }
 
+        ArrayAdapter<String> coursesAdapter = new ArrayAdapter<String>(GenerateTimeline.this, android.R.layout.simple_list_item_1, courses);
+        lvTimeline.setAdapter(coursesAdapter);
+
+            mDatabase.child("admin_courses").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    if (!task.isSuccessful()) {
+                        Toast.makeText(GenerateTimeline.this, "There are no courses added to select prerequisites, please enter them manually", Toast.LENGTH_LONG).show();
+                    } else {
+                        for (DataSnapshot ds : task.getResult().getChildren()) {
+                            String key = ds.getKey();
+                            if (key.equals(current_course)) {
+
+                                String[] pre_arr = ds.child("prerequisites").getValue().toString().split(",");
+                                prereq_arr.addAll(Arrays.asList(pre_arr));
+
+                            }
+                        }
+
+                    }
+                }
+            });
     }
 }
