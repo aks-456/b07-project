@@ -5,4 +5,5 @@
     <string name="prerequisites">Prerequisites</string>
     <string name="offering_sessions">Offering Sessions</string>
     <string name="add">Add</string>
+    <string name="edit_course">edit course</string>
 </resources>

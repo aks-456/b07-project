@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddCourseAdmin">
+    tools:context=".EditCourseAdmin">
 
     <TextView
         android:id="@+id/textView"
@@ -80,7 +80,7 @@
         android:id="@+id/btnAddCourse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add_course"
+        android:text="@string/edit_course"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.035"

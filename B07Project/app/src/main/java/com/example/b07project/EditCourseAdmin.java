@@ -3,8 +3,8 @@ package com.example.b07project;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-public class AddCourseAdmin extends AppCompatActivity {
+public class EditCourseAdmin extends AppCompatActivity {
 
     EditText etCourseName, etCourseCode, etCourseOfferings, etPrerequisites;
     Button btnAddCourse, btnAddPre;
@@ -45,7 +45,6 @@ public class AddCourseAdmin extends AppCompatActivity {
         btnAddPre = (Button)findViewById(R.id.btnAddPre);
         spPre = (Spinner)findViewById(R.id.spPre);
 
-
         //Get current signed in user
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = "";
@@ -57,23 +56,61 @@ public class AddCourseAdmin extends AppCompatActivity {
             uid = user.getUid();
         }
 
+
+//        //Populate all the fields
+//        Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
+//        intent.putExtra("Variable Name",string_to_be_sent);
+//        startActivity(intent);
+
+
+        //Receiving data inside onCreate() method of Second Activity
+        String courseCode = getIntent().getStringExtra("CourseCode");
+
+
+
+
+
         //Populate array for Prerequisites Dropdown
         ArrayList<String> preItems=new ArrayList<String>();
         preItems.add("Choose Prerequisite(s)");
+
+
+        mDatabase.child("admin_courses").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Toast.makeText(EditCourseAdmin.this, "There are no courses added to select prerequisites, please enter them manually", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    for(DataSnapshot ds : task.getResult().getChildren()) {
+                        String key = ds.getKey();
+                        if(key.equals(courseCode)) {
+                            etCourseName.setText(ds.child("name").getValue().toString());
+                            etCourseCode.setText(ds.child("code").getValue().toString());
+                            etCourseOfferings.setText(ds.child("offerings").getValue().toString());
+                            etPrerequisites.setText(ds.child("prerequisites").getValue().toString());
+                        }
+                    }
+                }
+            }
+        });
+
+
+
+
 
         //Get list of courses from firebase -- from admin id
         mDatabase.child("admin_courses").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
-                    Toast.makeText(AddCourseAdmin.this, "There are no courses added to select prerequisites, please enter them manually", Toast.LENGTH_LONG).show();
+                    Toast.makeText(EditCourseAdmin.this, "There are no courses added to select prerequisites, please enter them manually", Toast.LENGTH_LONG).show();
                 }
                 else {
                     for(DataSnapshot ds : task.getResult().getChildren()) {
                         String key = ds.getKey();
                         preItems.add(key);
                     }
-
                 }
             }
         });
@@ -121,11 +158,10 @@ public class AddCourseAdmin extends AppCompatActivity {
 
                 //Change to uid
                 writeNewCourse(strCourseName, strCourseCode, strPrerequisites, strOfferings);
+                //Delete existing course
 
             }
         });
-
-
     }
 
     public void writeNewCourse(String name, String code, String prerequisites, String offerings) {
@@ -133,6 +169,5 @@ public class AddCourseAdmin extends AppCompatActivity {
         Course course = new Course(name, code, prerequisites, offerings);
         mDatabase.child("admin_courses").child(code).setValue(course);
     }
-
 
 }

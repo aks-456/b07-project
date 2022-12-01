@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/aksha/Documents/B07-Group-Project/b07-project/B07Project/app/src/main/res/layout/activity_add_course_admin.xml" value="0.25" />
-        <entry key="..\:/Users/aksha/Documents/B07-Group-Project/b07-project/B07Project/app/src/main/res/layout/activity_main.xml" value="0.335" />
+        <entry key="..\:/Users/aksha/Documents/B07-Group-Project/b07-project/B07Project/app/src/main/res/layout/activity_add_course_admin.xml" value="0.125" />
+        <entry key="..\:/Users/aksha/Documents/B07-Group-Project/b07-project/B07Project/app/src/main/res/layout/activity_add_taken_course.xml" value="0.12138157894736842" />
+        <entry key="..\:/Users/aksha/Documents/B07-Group-Project/b07-project/B07Project/app/src/main/res/layout/activity_edit_course_admin.xml" value="0.12138157894736842" />
+        <entry key="..\:/Users/aksha/Documents/B07-Group-Project/b07-project/B07Project/app/src/main/res/layout/activity_generate_timeline.xml" value="0.165" />
+        <entry key="..\:/Users/aksha/Documents/B07-Group-Project/b07-project/B07Project/app/src/main/res/layout/activity_main.xml" value="0.125" />
       </map>
     </option>
   </component>

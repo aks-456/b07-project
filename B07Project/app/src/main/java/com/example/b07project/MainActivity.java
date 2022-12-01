@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnAddCourse;
+    Button btnAddCourse, btnGenerateTimeline;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnAddCourse = findViewById(R.id.btnAddCourseAdmin);
+        btnGenerateTimeline = findViewById(R.id.btnGenerate);
+
         btnAddCourse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -26,9 +28,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnGenerateTimeline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
-
-
-
 
 }
