@@ -87,7 +87,6 @@ public class EditCourses extends AppCompatActivity {
 
             }
             private void deleteCourse(String courseCode) {
-
                 database.child("admin_courses").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -96,7 +95,7 @@ public class EditCourses extends AppCompatActivity {
                         }
                         else {
                             for (DataSnapshot ds: task.getResult().getChildren()) {
-                                String[] prereqs = task.getResult().child(ds.getKey()).child("prerequisites").getValue().toString().split(",");
+                                String[] prereqs = ds.child("prerequisites").getValue().toString().split(",");
                                 int i = 0;
                                 boolean courseInList = false;
                                 while (i < prereqs.length && !courseInList) {
@@ -108,7 +107,8 @@ public class EditCourses extends AppCompatActivity {
                                                 newPrereqs += prereqs[j] + ",";
                                             }
                                         }
-                                        database.child("admin_courses").child(ds.getKey()).child("prerequisites").setValue(newPrereqs.substring(0, newPrereqs.length()-1));
+                                        database.child("admin_courses").child(ds.getKey()).child("prerequisites")
+                                                .setValue(newPrereqs.substring(0, newPrereqs.length()-1));
                                     }
                                     i++;
                                 }
@@ -129,11 +129,6 @@ public class EditCourses extends AppCompatActivity {
                     }
                 });
             }
-
-
         });
-
-
-
     }
 }
