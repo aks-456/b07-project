@@ -19,4 +19,10 @@
     <string name="email_registration">Email</string>
     <string name="password_registration">Password</string>
     <string name="register_registration">Register</string>
+    <string name="add_course">Add Course</string>
+    <string name="course_name">Course Name</string>
+    <string name="prerequisites">Prerequisites</string>
+    <string name="offering_sessions">Offering Sessions</string>
+    <string name="add">Add</string>
+    <string name="edit_course">edit course</string>
 </resources>
