@@ -19,4 +19,8 @@
     <string name="email_registration">Email</string>
     <string name="password_registration">Password</string>
     <string name="register_registration">Register</string>
+    <string name="Display_taken_course_title">Taken Course</string>
+    <string name="Display_taken_course_title_button_add">Add</string>
+    <string name="Display_taken_course_title_button_del">Delete</string>
+    <string name="confirm1">Confirm</string>
 </resources>
