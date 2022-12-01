@@ -1,0 +1,61 @@
+Name: Dhruvin
+
+What have you done since yesterday?
+- Finishing  creating the list view and the over looks for the edit page.
+
+What are you planning on doing today?
+-continue adding UI features like back and next buttons where neccisary and also updating the delete function
+
+Any impediments or stumbling blocks?
+    - None so far 
+    
+    
+Name: Kevin 
+
+What have you done since yesterday?
+    - Changed how the data is stored on the firebase to match with others.
+    
+What are you planning on doing today?
+    - Add a checkbox for admin sign up
+    - Add an admin-tag for the admins in the database
+    - Finish admin login
+
+Any impediments or stumbling blocks?
+    - None
+
+
+Name: Aahil
+
+What have you done since yesterday?
+    - Completed functionality to allow admin to delete courses according to last update (user story 6)
+
+What are you planning on doing today?
+    - Finish the generate timeline feature alongside a couple other group members (user story 3)
+
+Any impediments or stumbling blocks?
+    - None
+
+
+Name: Anqi 
+
+What have you done since yesterday?
+- Completed reading from firebase for user story 2
+
+What are you planning on doing today?
+- Start the writing portion for user story 2, to allow users to add courses they have taken. 
+
+Any impediments or stumbling blocks?
+    - None so far
+
+
+Name: Akshath
+
+What have you done since yesterday?
+- Instead of focusing on user story 2, I switched towards working on allowing admins to edit course information (user story 6).
+- I was able to allow users to edit the course, but it creates duplicates so I still have to work on that. 
+
+What are you planning on doing today?
+- Fixing duplicate courses issue from user story 6, as well as start working on users story 3, to allow users to generate a timeline. 
+
+Any impediments or stumbling blocks?
+- None
