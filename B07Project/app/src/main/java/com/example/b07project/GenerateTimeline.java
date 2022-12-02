@@ -90,12 +90,12 @@ public class GenerateTimeline extends AppCompatActivity {
                     } else {
                         for (DataSnapshot ds : task.getResult().getChildren()) {
                             String key = ds.getKey();
-                            if (key.equals(current_course)) {
-
-                                String[] pre_arr = ds.child("prerequisites").getValue().toString().split(",");
-                                prereq_arr.addAll(Arrays.asList(pre_arr));
-
-                            }
+//                            if (key.equals(current_course)) {
+//
+//                                String[] pre_arr = ds.child("prerequisites").getValue().toString().split(",");
+//                                prereq_arr.addAll(Arrays.asList(pre_arr));
+//
+//                            }
                         }
 
                     }
