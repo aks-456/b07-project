@@ -1,18 +1,24 @@
 package com.example.b07project;
 
 import com.google.firebase.database.IgnoreExtraProperties;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @IgnoreExtraProperties
-public class Course {
+public class Course implements Serializable{
 
         public String name;
         public String code;
         public String prerequisites;
         public String offerings;
 
+        
         public Course() {
-            // Default constructor required for calls to DataSnapshot.getValue(User.class)
+            
         }
+
 
         public Course(String name, String code, String prerequisites, String offerings) {
             this.name = name;
@@ -21,4 +27,5 @@ public class Course {
             this.prerequisites = prerequisites;
         }
 
-}
+
+    }

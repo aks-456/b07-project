@@ -25,4 +25,8 @@
     <string name="offering_sessions">Offering Sessions</string>
     <string name="add">Add</string>
     <string name="edit_course">edit course</string>
+    <string name="Display_taken_course_title">Taken Course</string>
+    <string name="Display_taken_course_title_button_add">Add</string>
+    <string name="Display_taken_course_title_button_del">Delete</string>
+    <string name="confirm1">Confirm</string>
 </resources>
