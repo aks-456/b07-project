@@ -28,6 +28,7 @@ public class Model {
     private DatabaseReference coursesRef;
     private DatabaseReference usersRef;
 
+    //this may need mod later on, to get difference path
     private Model() {
         coursesRef = FirebaseDatabase.getInstance().getReference("courses");
         usersRef = FirebaseDatabase.getInstance().getReference("users");
@@ -53,7 +54,7 @@ public class Model {
     // Used to create/edit a Course Object to firebase
     public void postCourse(Course course, Consumer<Boolean> callback) {
         coursesRef.child(course.code).setValue(course).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
+//            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 callback.accept(task.isSuccessful());
@@ -63,7 +64,7 @@ public class Model {
 
     public void getCourses(Consumer<List<Course>> callback) {
         coursesRef.addValueEventListener(new ValueEventListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
+//            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 List<Course> allCourses = new ArrayList<>();

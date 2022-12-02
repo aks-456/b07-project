@@ -14,15 +14,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
-
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -42,8 +33,9 @@ public class display_taken_course extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_taken_course);
 
-        // userID = getIntent().getStringExtra("some key ...");
-        userID = "1";
+
+        userID = getIntent().getStringExtra("key");
+
 
         courseTaken = new ArrayList<>();
 
@@ -76,28 +68,30 @@ public class display_taken_course extends AppCompatActivity implements View.OnCl
         }
     }
 
-    //for admin mb
-    public void AdminAddCourse() {
-        System.out.println("adding");
-        // should get all the strings from Edit texts
+//    //for admin mb
+//    public void AdminAddCourse() {
+//        System.out.println("adding");
+//        // should get all the strings from Edit texts
+//
+//        // hard code (testing)
+//        Course course = new Course();
+//        course.code = "CSCA48";
+//        course.sessions = "Winter 2023";
+//        course.prerequisite.add("CSCA08");
+//
+//        model.postCourse(course, (Boolean added) -> {
+//            if (!added) {
+//                Toast.makeText(display_taken_course.this, "failed to add course", Toast.LENGTH_LONG).show();
+//                return;
+//            }
+//            else{
+//                Toast.makeText(display_taken_course.this, "added course", Toast.LENGTH_LONG).show();
+//            }
+//        });
+//    }
 
-        // hard code (testing)
-        Course course = new Course();
-        course.code = "CSCA48";
-        course.sessions = "Winter 2023";
-        course.prerequisite.add("CSCA08");
 
-        model.postCourse(course, (Boolean added) -> {
-            if (!added) {
-                Toast.makeText(display_taken_course.this, "failed to add course", Toast.LENGTH_LONG).show();
-                return;
-            }
-            else{
-                Toast.makeText(display_taken_course.this, "added course", Toast.LENGTH_LONG).show();
-            }
-        });
-    }
-
+//reading from firebase
     private void updateListView() {
         model.getCourses((List<Course> allCourses) -> {
             model.getUserById(userID, (User user) -> {
