@@ -92,19 +92,19 @@ public class login_activity extends AppCompatActivity {
         return;
     }
 
-
     @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-           reload();
+           reload(currentUser);
         }
     }
 
-    private void reload() {
+    private void reload(FirebaseUser user) {
         Intent intent = new Intent(login_activity.this, EditCourses.class); //CHANGE TO THE HOMEPAGE
+        intent.putExtra("key",user.getUid());
         startActivity(intent);
     }
 

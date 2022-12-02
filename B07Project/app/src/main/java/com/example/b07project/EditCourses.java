@@ -65,7 +65,7 @@ public class EditCourses extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(EditCourses.this, AdminHomePage.class));
+                startActivity(new Intent(EditCourses.this, EditCourses.class));
             }
         });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -76,15 +76,15 @@ public class EditCourses extends AppCompatActivity {
                 builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         deleteCourse(arr.get(i));
+                        arr2.notifyDataSetChanged();
                         finish();
-                        startActivity(getIntent());
                     }
                 });
                 builder.setNegativeButton("Edit", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // Call edit func
                         finish();
-                        startActivity(getIntent());
+                        startActivity(getIntent()); // CHNAGE TO AK's edit code
                     }
                 });
                 AlertDialog dialog = builder.create();
