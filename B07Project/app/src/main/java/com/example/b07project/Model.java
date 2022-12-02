@@ -123,8 +123,8 @@ public class Model {
                     Course course = allCourses.get(cur);
                     path.add(course);
 
-                    for (String next: course.prerequisite)
-                        q.offer(next);  // enqueue the next course
+//                    for (String next: course.prerequisite)
+//                        q.offer(next);  // enqueue the next course
                 }
                 callback.accept(path);
             }

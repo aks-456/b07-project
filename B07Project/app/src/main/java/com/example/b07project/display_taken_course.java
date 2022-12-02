@@ -84,8 +84,8 @@ public class display_taken_course extends AppCompatActivity implements View.OnCl
         // hard code (testing)
         Course course = new Course();
         course.code = "CSCA48";
-        course.sessions = "Winter 2023";
-        course.prerequisite.add("CSCA08");
+//        course.sessions = "Winter 2023";
+//        course.prerequisite.add("CSCA08");
 
         model.postCourse(course, (Boolean added) -> {
             if (!added) {

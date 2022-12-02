@@ -40,7 +40,7 @@ public class crsAdapter  extends ArrayAdapter<Course> {
         }
 
         viewHolder.code.setText(crs.code);
-        viewHolder.sessions.setText(crs.sessions);
+       // viewHolder.sessions.setText(crs.sessions);
 
         return convertView;
 
