@@ -3,6 +3,7 @@ package com.example.b07project;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -121,6 +122,9 @@ public class AddCourseAdmin extends AppCompatActivity {
 
                 //Change to uid
                 writeNewCourse(strCourseName, strCourseCode, strPrerequisites, strOfferings);
+                Intent intent = new Intent(AddCourseAdmin.this, EditCourses.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
 
             }
         });
