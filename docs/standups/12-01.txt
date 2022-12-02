@@ -1,0 +1,63 @@
+Name: Anqi 
+
+What have you done since yesterday?
+- adjust the structure of the class and work further on reading and writing
+
+What are you planning on doing today?
+-checked with the group to make mod  after merging
+
+Any impediments or stumbling blocks?
+    - issue with conflicts in gradle dependencies for firebase connection
+
+
+Name: Aahil
+
+What have you done since yesterday?
+    - Worked on generate timeline method and tested delete course method (user stories 3 and 6)
+
+What are you planning on doing today?
+    - Finish the full prerequisite list for generate timeline method (user story 6)
+
+Any impediments or stumbling blocks?
+    - None
+
+
+Name: Akshath
+
+What have you done since yesterday?
+- Started working on user story 3, to allow users to generate a timeline.
+- Also worked on finishing user story 6
+
+What are you planning on doing today?
+- Not much due to quiz and assignments. Will resume tomorrow
+
+Any impediments or stumbling blocks?
+- None
+
+
+Name: Kevin 
+
+What have you done since yesterday?
+    - Discarded the checkbox design.
+    
+What are you planning on doing today?
+    - Finish the two-buttons design
+    - Start discussing generate timeline
+    - Optimize the register and login and homepages.
+
+Any impediments or stumbling blocks?
+    - None
+
+
+Name: Dhruvin
+
+What have you done since yesterday?
+
+- Tweak some UI features to make it more visible and more usuable
+
+What are you planning on doing today?
+
+- Same as before. Keep working on UI changes
+
+Any impediments or stumblkmg blocks?
+- None
