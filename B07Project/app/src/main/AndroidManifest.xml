@@ -17,13 +17,10 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".RegisterActivity"
             android:name=".EditCourses"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+            android:exported="false"
+            />
+
         <activity
             android:name=".RegisterActivity"
             android:exported="false">
@@ -31,7 +28,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".EditCourseAdmin"
+                <activity android:name=".EditCourseAdmin"
             android:exported="false"/>
         <activity
             android:name=".login_activity"
@@ -44,7 +41,9 @@
             </intent-filter>
 
         </activity>
-        <activity
+
+
+    <activity
             android:name=".GenerateTimeline"
             android:exported="false" />
         <activity
@@ -57,11 +56,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

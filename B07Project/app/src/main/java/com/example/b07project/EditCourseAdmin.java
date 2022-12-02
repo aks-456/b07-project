@@ -47,14 +47,6 @@ public class EditCourseAdmin extends AppCompatActivity {
 
         //Get current signed in user
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = "";
-        if (user != null) {
-
-            // The user's ID, unique to the Firebase project. Do NOT use this value to
-            // authenticate with your backend server, if you have one. Use
-            // FirebaseUser.getIdToken() instead.
-            uid = user.getUid();
-        }
 
 
 //        //Populate all the fields
@@ -62,12 +54,9 @@ public class EditCourseAdmin extends AppCompatActivity {
 //        intent.putExtra("Variable Name",string_to_be_sent);
 //        startActivity(intent);
 
-
         //Receiving data inside onCreate() method of Second Activity
-        String courseCode = getIntent().getStringExtra("CourseCode");
-
-
-
+       // String courseCode = getIntent().getStringExtra("CourseCode");
+        String courseCode = "CSCB36";
 
 
         //Populate array for Prerequisites Dropdown
@@ -168,6 +157,10 @@ public class EditCourseAdmin extends AppCompatActivity {
         //Check if the course code already exists
         Course course = new Course(name, code, prerequisites, offerings);
         mDatabase.child("admin_courses").child(code).setValue(course);
+
+
+
+
     }
 
 }
