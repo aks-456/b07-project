@@ -11,6 +11,37 @@
         android:theme="@style/Theme.B07Project">
         <activity
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+            android:name=".StudentHomePage"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".testact"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".AdminHomePage"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".EditCourses"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+>>>>>>> Stashed changes
             android:name=".RegisterActivity"
 =======
             android:name=".GenerateCourseStudent"

@@ -17,6 +17,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class login_activity extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -24,11 +29,13 @@ public class login_activity extends AppCompatActivity {
     Button text_signup;
     Button text_signuppage;
     Button text_back;
+    private DatabaseReference mDatabase;
     private static final String TAG = "EmailPassword";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+<<<<<<< Updated upstream
          text_email = findViewById(R.id.editTextTextEmailAddress);
          text_password = findViewById(R.id.editTextTextPassword);
          text_signup = (Button)findViewById(R.id.activity_switcher_button);
@@ -43,10 +50,17 @@ public class login_activity extends AppCompatActivity {
                  startActivity(intent);
              }
          });
+=======
+        text_email = findViewById(R.id.editTextTextEmailAddress);
+        text_password = findViewById(R.id.editTextTextPassword);
+        text_signup = (Button)findViewById(R.id.activity_switcher_button);
+        text_signuppage = (Button)findViewById(R.id.toSignUp);
+        mAuth = FirebaseAuth.getInstance();
+>>>>>>> Stashed changes
     text_signuppage.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-        Intent intent = new Intent(login_activity.this, RegisterActivity.class);
+            Intent intent = new Intent(login_activity.this, RegisterActivity.class);
             startActivity(intent);
         }
     });
@@ -96,7 +110,7 @@ public class login_activity extends AppCompatActivity {
         if(user != null) {
             Toast.makeText(login_activity.this, "Verification Successful",
                     Toast.LENGTH_SHORT).show();
-
+            onStart();
         }
         return;
     }
@@ -106,15 +120,44 @@ public class login_activity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-           reload();
-        }
-    }
+        FirebaseUser user = mAuth.getCurrentUser();
+//        if (user == null){
+//            Intent intent = new Intent(login_activity.this,RegisterActivity.class);
+//            startActivity(intent);
+//        }
+        String uid = "";
+        uid = user.getUid();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Admin").child(uid);
 
+<<<<<<< Updated upstream
     private void reload() {
 //        Intent intent = new Intent(login_activity.this, MainActivity.class); //CHANGE TO THE HOMEPAGE
 //        startActivity(intent);
     }
+=======
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+>>>>>>> Stashed changes
 
+        String finalUid = uid;
+        mDatabase.child("Admin").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Toast.makeText(login_activity.this, "There are no cou", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    for(DataSnapshot ds : task.getResult().getChildren()) {
+                        if(finalUid.equals(ds.getKey().toString())) {
+                            Intent intent = new Intent(login_activity.this, AdminHomePage.class); //CHANGE TO THE HOMEPAGE
+                            startActivity(intent);
+                            return;
+                        }
+                    }
+                    Intent intent = new Intent(login_activity.this, StudentHomePage.class); //CHANGE TO THE HOMEPAGE
+                    startActivity(intent);
+                }
+            }
+        });
+    }
 }

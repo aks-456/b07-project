@@ -18,5 +18,28 @@
     <string name="registration_page">Registration Page</string>
     <string name="email_registration">Email</string>
     <string name="password_registration">Password</string>
+<<<<<<< Updated upstream
     <string name="register_registration">Register</string>
+=======
+    <string name="register_registration_stud">Register as student</string>
+    <string name="register_registration_admin">Register as admin</string>
+    <string name="back_course_button">Back</string>
+    <string name="edit_courses_button">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="admin_homepage">Admin Homepage</string>
+    <string name="student_homepage">Student Homepage</string>
+    <string name="Add_courses_button">Button</string>
+    <string name="add_courses">Add Courses</string>
+    <string name="edit_courses">Edit Courses</string>
+    <string name="delete_courses">Delete Courses</string>
+    <string name="Back_button_edit_courses">Back</string>
+    <string name="title_activity_student_home_page">StudentHomePage</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+>>>>>>> Stashed changes
 </resources>
