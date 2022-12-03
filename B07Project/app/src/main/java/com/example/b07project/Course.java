@@ -7,25 +7,32 @@ import java.util.List;
 
 
 @IgnoreExtraProperties
-public class Course implements Serializable{
+public class Course{
 
-        public String name;
+
         public String code;
-        public String prerequisites;
-        public String offerings;
-
-        
-        public Course() {
-            
-        }
+        public String sessions;
 
 
-        public Course(String name, String code, String prerequisites, String offerings) {
-            this.name = name;
-            this.code = code;
-            this.offerings = offerings;
-            this.prerequisites = prerequisites;
-        }
 
+
+    public Course() {
 
     }
+
+        public Course(String name, String code, String prerequisites, String offerings) {
+
+            this.code = code;
+            this.sessions = sessions;
+
+        }
+
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getSessions() {
+        return sessions;
+    }
+}

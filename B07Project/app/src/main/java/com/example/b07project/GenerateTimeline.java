@@ -31,7 +31,7 @@ public class GenerateTimeline extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_generate_timeline);
 
-        lvTimeline = (ListView)findViewById(R.id.lv_timeline);
+        lvTimeline = (ListView) findViewById(R.id.lv_timeline);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -57,17 +57,16 @@ public class GenerateTimeline extends AppCompatActivity {
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
                     Toast.makeText(GenerateTimeline.this, "There are no courses added to select prerequisites, please enter them manually", Toast.LENGTH_LONG).show();
-                }
-                else {
-                    for(DataSnapshot ds : task.getResult().getChildren()) {
+                } else {
+                    for (DataSnapshot ds : task.getResult().getChildren()) {
                         String key = ds.getKey();
                         //101 -- replace with current user
-                        if(key.equals("101")) {
+                        if (key.equals("101")) {
 
-                            String [] taken_arr = ds.child("taken_courses").getValue().toString().split(",");
+                            String[] taken_arr = ds.child("taken_courses").getValue().toString().split(",");
                             taken_courses.addAll(Arrays.asList(taken_arr));
 
-                            for(int j = 0; j < taken_courses.size(); j++) {
+                            for (int j = 0; j < taken_courses.size(); j++) {
                                 Log.e("RANDOM", taken_courses.get(j));
                             }
 
@@ -82,24 +81,25 @@ public class GenerateTimeline extends AppCompatActivity {
         ArrayAdapter<String> coursesAdapter = new ArrayAdapter<String>(GenerateTimeline.this, android.R.layout.simple_list_item_1, courses);
         lvTimeline.setAdapter(coursesAdapter);
 
-            mDatabase.child("admin_courses").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DataSnapshot> task) {
-                    if (!task.isSuccessful()) {
-                        Toast.makeText(GenerateTimeline.this, "There are no courses added to select prerequisites, please enter them manually", Toast.LENGTH_LONG).show();
-                    } else {
-                        for (DataSnapshot ds : task.getResult().getChildren()) {
-                            String key = ds.getKey();
-                            if (key.equals(current_course)) {
-
-                                String[] pre_arr = ds.child("prerequisites").getValue().toString().split(",");
-                                prereq_arr.addAll(Arrays.asList(pre_arr));
-
-                            }
-                        }
-
-                    }
-                }
-            });
+//            mDatabase.child("admin_courses").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+//                @Override
+//                public void onComplete(@NonNull Task<DataSnapshot> task) {
+//                    if (!task.isSuccessful()) {
+//                        Toast.makeText(GenerateTimeline.this, "There are no courses added to select prerequisites, please enter them manually", Toast.LENGTH_LONG).show();
+//                    } else {
+//                        for (DataSnapshot ds : task.getResult().getChildren()) {
+//                            String key = ds.getKey();
+//                            if (key.equals(current_course)) {
+//
+//                                String[] pre_arr = ds.child("prerequisites").getValue().toString().split(",");
+//                                prereq_arr.addAll(Arrays.asList(pre_arr));
+//
+//                            }
+//                        }
+//
+//                    }
+//                }
+//            });
+//    }
     }
 }

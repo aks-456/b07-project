@@ -29,8 +29,8 @@ public class Model {
     private DatabaseReference usersRef;
 
     private Model() {
-        coursesRef = FirebaseDatabase.getInstance().getReference("courses");
-        usersRef = FirebaseDatabase.getInstance().getReference("users");
+        coursesRef = FirebaseDatabase.getInstance().getReference("admin_courses");
+        usersRef = FirebaseDatabase.getInstance().getReference("students");
     }
 
     public static Model getInstance() {
