@@ -146,19 +146,50 @@ public class EditCourseAdmin extends AppCompatActivity {
                 }
 
                 //Change to uid
-                writeNewCourse(strCourseName, strCourseCode, strPrerequisites, strOfferings);
+                writeNewCourse(strCourseName, courseCode, strCourseCode, strPrerequisites, strOfferings);
                 //Delete existing course
 
             }
         });
     }
 
-    public void writeNewCourse(String name, String code, String prerequisites, String offerings) {
+    public void writeNewCourse(String name, String previousCode, String code, String prerequisites, String offerings) {
         //Check if the course code already exists
         Course course = new Course(name, code, prerequisites, offerings);
         mDatabase.child("admin_courses").child(code).setValue(course);
 
+        //Edit from prereq's
+       // mDatabase.child("admin_courses").child(code).setValue(course);
 
+
+        mDatabase.child("admin_courses").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Toast.makeText(EditCourseAdmin.this, "There are no courses added to select prerequisites, please enter them manually", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    String update = "";
+                    for(DataSnapshot ds : task.getResult().getChildren()) {
+                        String key = ds.getKey();
+                            String [] arr = ds.child("prerequisites").toString().split(",");
+
+                            for(int i = 0; i < arr.length; i++) {
+
+                                if(arr[i].equals(previousCode)) {
+                                    arr[i] = code;
+                                }
+                                update += arr[i];
+                            }
+
+                            //set prerequisites equal to update
+                            //ds.
+                    }
+                }
+            }
+        });
+
+        //Edit from users who've taken the course
 
 
     }
