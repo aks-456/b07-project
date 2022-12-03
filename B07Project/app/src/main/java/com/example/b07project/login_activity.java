@@ -87,6 +87,9 @@ public class login_activity extends AppCompatActivity {
         if(user != null) {
             Toast.makeText(login_activity.this, "Verification Successful",
                     Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(login_activity.this, EditCourses.class); //CHANGE TO THE HOMEPAGE
+            intent.putExtra("key",user.getUid());
+            startActivity(intent);
 
         }
         return;
