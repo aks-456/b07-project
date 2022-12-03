@@ -89,7 +89,7 @@ public class EditCourses extends AppCompatActivity {
                 builder.setTitle("Select");
                 builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        deleteCourse(arr.get(i));
+                        deleteCourse(arr.get(i).split("\n")[0]);
                         arr2.notifyDataSetChanged();
                         finish();
                     }
@@ -108,6 +108,7 @@ public class EditCourses extends AppCompatActivity {
 
             }
             private void deleteCourse(String courseCode) {
+                Log.e("TAG", courseCode);
 
                 database.child("admin_courses").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                     @Override
@@ -129,7 +130,11 @@ public class EditCourses extends AppCompatActivity {
                                                 newPrereqs += prereqs[j] + ",";
                                             }
                                         }
-                                        database.child("admin_courses").child(ds.getKey()).child("prerequisites").setValue(newPrereqs.substring(0, newPrereqs.length()-1));
+                                        int upperBound = 0;
+                                        if (!newPrereqs.equals("")) {
+                                            upperBound = newPrereqs.length()-1;
+                                        }
+                                        database.child("admin_courses").child(ds.getKey()).child("prerequisites").setValue(newPrereqs.substring(0, upperBound));
                                     }
                                     i++;
                                 }

@@ -70,7 +70,7 @@ public class GenerateTimeline extends AppCompatActivity {
                         //101 -- replace with current user
                         if(key.equals("101")) {
 
-                            String [] taken_arr = ds.child("taken_courses").getValue().toString().split(",");
+                            String [] taken_arr = ds.child("takenCourse").getValue().toString().split(",");
                             takenCourses.addAll(Arrays.asList(taken_arr));
                         }
                     }
@@ -165,6 +165,8 @@ public class GenerateTimeline extends AppCompatActivity {
             Set<String> coursesSet = new LinkedHashSet<>(newCourses);
             newCourses.clear();
             newCourses.addAll(coursesSet);
+
+            // write newCourses array list to database
 
             // prints out one list of necessary courses for each course student wants to take
             for (int x = 0; x < newCourses.size(); x++) {
