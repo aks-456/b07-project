@@ -40,4 +40,8 @@
     <string name="Back_button_edit_courses">Back</string>
     <string name="avalialbe_courses">Avalialbe Courses</string>
     <string name="click_to_edit_or_delete_a_course">Click To Edit or Delete A Course</string>
+    <string name="click_to_add_prerequisites">Click To Add Prerequisites</string>
+    <string name="click_to_add_offerings">Click To Add Offerings</string>
+    <string name="done">Done</string>
+    <string name="course_code">Course Code</string>
 </resources>
