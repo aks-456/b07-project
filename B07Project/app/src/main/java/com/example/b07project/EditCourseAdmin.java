@@ -3,7 +3,6 @@ package com.example.b07project;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -41,7 +40,7 @@ public class EditCourseAdmin extends AppCompatActivity {
         etCourseCode = (EditText)findViewById(R.id.etCourseCode);
         etCourseOfferings = (EditText)findViewById(R.id.etCourseOfferings);
         etPrerequisites = (EditText)findViewById(R.id.etPrerequisities);
-        btnAddCourse = (Button)findViewById(R.id.btnAddCourse);
+        btnAddCourse = (Button)findViewById(R.id.doneButton);
         btnAddPre = (Button)findViewById(R.id.btnAddPre);
         spPre = (Spinner)findViewById(R.id.spPre);
 
