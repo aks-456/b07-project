@@ -23,24 +23,28 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class EditCourses extends AppCompatActivity {
     ListView listView;
     ArrayList<String> arr = new ArrayList<>();
     private DatabaseReference database;
     Button btn;
+    Button add_course; // ADD COURSES BUTTON
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_courses);
         listView = (ListView)findViewById(R.id.list_view);
         btn = findViewById(R.id.button_to_go_back);
+        add_course = findViewById(R.id.button3);
         ArrayAdapter<String> arr2 = new ArrayAdapter<>(this, R.layout.textviewlayout, arr);
         database = FirebaseDatabase.getInstance().getReference();
 
@@ -53,19 +57,29 @@ public class EditCourses extends AppCompatActivity {
                 else {
                     for(DataSnapshot ds : task.getResult().getChildren()) {
 
-                        String key = "\n" + ds.child("name").getValue() + " "+ ds.getKey() + "\nOffered: " + ds.child("offerings").getValue() + "\nPrerequisites: " + ds.child("prerequisites").getValue() +"\n";
+                        String key =ds.getKey() + "\n"+ ds.child("name").getValue() + "\nOFFERED: " + ds.child("offerings").getValue() + "\nPREREQUISITES: " + ds.child("prerequisites").getValue();
                         arr.add(key);
                     }
                     listView.setAdapter(arr2);
-
                 }
 
+            }
+        });
+        add_course.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(EditCourses.this, AddCourseAdmin.class));
+                arr2.notifyDataSetChanged();
             }
         });
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(EditCourses.this, EditCourses.class));
+//                startActivity(new Intent(EditCourses.this, EditCourses.class));
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(EditCourses.this, login_activity.class));
+
+
             }
         });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -75,7 +89,7 @@ public class EditCourses extends AppCompatActivity {
                 builder.setTitle("Select");
                 builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        deleteCourse(arr.get(i));
+                        deleteCourse(arr.get(i).split("\n")[0]);
                         arr2.notifyDataSetChanged();
                         finish();
                     }
@@ -83,8 +97,8 @@ public class EditCourses extends AppCompatActivity {
                 builder.setNegativeButton("Edit", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // Call edit func
-                        finish();
-                        startActivity(getIntent()); // CHNAGE TO AK's edit code
+                        startActivityForResult(new Intent(EditCourses.this, EditCourseAdmin.class), 1); // CHNAGE TO AK's edit code
+                        arr2.notifyDataSetChanged();
                     }
                 });
                 AlertDialog dialog = builder.create();
@@ -94,6 +108,7 @@ public class EditCourses extends AppCompatActivity {
 
             }
             private void deleteCourse(String courseCode) {
+                Log.e("TAG", courseCode);
 
                 database.child("admin_courses").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                     @Override
@@ -115,7 +130,11 @@ public class EditCourses extends AppCompatActivity {
                                                 newPrereqs += prereqs[j] + ",";
                                             }
                                         }
-                                        database.child("admin_courses").child(ds.getKey()).child("prerequisites").setValue(newPrereqs.substring(0, newPrereqs.length()-1));
+                                        int upperBound = 0;
+                                        if (!newPrereqs.equals("")) {
+                                            upperBound = newPrereqs.length()-1;
+                                        }
+                                        database.child("admin_courses").child(ds.getKey()).child("prerequisites").setValue(newPrereqs.substring(0, upperBound));
                                     }
                                     i++;
                                 }
