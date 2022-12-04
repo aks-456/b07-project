@@ -43,18 +43,35 @@ public class AddtakencrsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                writeNewCrs();
-                Toast toast = Toast.makeText(AddtakencrsActivity.this, "Course added successfully!", Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.CENTER_VERTICAL|Gravity.START,90, 0);
-                toast.show();
+                if(isEmpty(editTextcode) || isEmpty(editTextsessions) ){
+                    Toast toast = Toast.makeText(AddtakencrsActivity.this, "Please enter information!", Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER_VERTICAL|Gravity.START,90, 0);
+                    toast.show();
+
+
+                }
+                else {
+
+                    writeNewCrs();
+                    Toast toast = Toast.makeText(AddtakencrsActivity.this, "Course added successfully!", Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.START, 90, 0);
+                    toast.show();
+                }
 
             }
 
-            public void writeNewCrs() {
+            private void writeNewCrs() {
                 Course course = new Course(editTextcode.getText().toString(),
                         editTextsessions.getText().toString());
                 String code = editTextcode.getText().toString();
                 ref.child(code).setValue(course);
+            }
+
+            private boolean isEmpty(EditText etText) {
+                if (etText.getText().toString().trim().length() > 0)
+                    return false;
+
+                return true;
             }
         });
 
