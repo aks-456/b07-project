@@ -1,13 +1,13 @@
 Name: Anqi 
 
 What have you done since yesterday?
-- adjust the structure of the class and work further on reading and writing
+- finished reading and writing for user story 2
 
 What are you planning on doing today?
--checked with the group to make mod  after merging
+-continue touchin up on user story 2 and make mod if needed after group meeting
 
 Any impediments or stumbling blocks?
-    - issue with conflicts in gradle dependencies for firebase connection
+    - none
         
     
 Name: Aahil
