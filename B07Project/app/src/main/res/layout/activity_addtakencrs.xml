@@ -4,46 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DisplayTakenCourseActivity">
+    tools:context=".AddtakencrsActivity">
 
-    <TextView
-        android:id="@+id/dtc_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Display_taken_course_title"
-        android:textSize="24sp"
-        android:textStyle="bold"
+    <EditText
+        android:id="@+id/edTxtCode"
+        android:layout_width="160dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:hint="New Taken Course"
+        android:textSize="12sp"
+
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.178"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13" />
+        app:layout_constraintVertical_bias="0.291" />
 
-    <ListView
-        android:layout_width="321dp"
-        android:layout_height="369dp"
-        android:id="@+id/takencrslist_view"
+    <EditText
+        android:id="@+id/edTxtSession"
+        android:layout_width="160dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:hint="Sessions"
+        android:textSize="12sp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/dtc_title"
-        app:layout_constraintTop_toBottomOf="@+id/dtc_title"
-        app:layout_constraintVertical_bias="0.057" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edTxtCode"
+        app:layout_constraintVertical_bias="0.113" />
 
     <Button
         android:id="@+id/tcbuttonAdd"
         android:layout_width="143dp"
         android:layout_height="48dp"
         android:text="@string/Display_taken_course_title_button_add"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.866"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/takencrslist_view"
-        app:layout_constraintVertical_bias="0.525" />
-
-
-
+        app:layout_constraintTop_toBottomOf="@+id/edTxtSession"
+        app:layout_constraintVertical_bias="0.194" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
