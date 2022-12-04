@@ -47,7 +47,7 @@ public class DisplayTakenCourseActivity extends AppCompatActivity {
         //TODO fix user id with intent.getextra...
 
         String userid = "101";
-        ref = database.getReference("students").child(userid).child("takenCourse");
+        ref = database.getReference("students").child(userid).child("taken_courses");
         list = new ArrayList<>();
         crsAdapter adapter = new crsAdapter(DisplayTakenCourseActivity.this, R.layout.crs_list, list);
         ref.addValueEventListener(new ValueEventListener() {
