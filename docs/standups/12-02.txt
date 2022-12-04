@@ -1,0 +1,60 @@
+Name: Anqi 
+
+What have you done since yesterday?
+- adjust the structure of the class and work further on reading and writing
+
+What are you planning on doing today?
+-checked with the group to make mod  after merging
+
+Any impediments or stumbling blocks?
+    - issue with conflicts in gradle dependencies for firebase connection
+        
+    
+Name: Aahil
+
+What have you done since yesterday?
+    - Finished the full prerequisite list for generate timeline method (user story 3)
+
+What are you planning on doing today?
+    - Further test and optimize the generate timeline method (user story 3)
+    - Fix remaining fronted and backend errors on generate timeline page (user story 3)
+
+Any impediments or stumbling blocks?
+    - None
+
+
+Name: Kevin 
+
+What have you done since yesterday?
+    - Fixed some UID mismatch errors
+What are you planning on doing today?
+    - Finish the admin and student homepages
+
+Any impediments or stumbling blocks?
+    - None
+
+
+Name: Dhruvin
+
+What have you done since yesterday?
+
+- Been working on combining the different activities and fit them into the code to run smoothly and as wanted
+
+What are you planning on doing today?
+
+- Continue working on combining the different activities and fit them into the code to run smoothly and as wanted
+
+Any impediments or stumbling blocks?
+
+
+Name: Akshath
+
+What have you done since yesterday?
+- Worked on the second half of generate timeline (display the course and the offering sessions).
+
+What are you planning on doing today?
+- Fix errors from AddCourseAdmin.java, and EditCourse.java which occured after commiting my files. 
+
+Any impediments or stumbling blocks?
+- None
+
