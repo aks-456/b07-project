@@ -6,9 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.text.Html;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
 import android.util.Log;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,8 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+
 
 public class EditCourses extends AppCompatActivity {
     ListView listView;
@@ -97,8 +92,16 @@ public class EditCourses extends AppCompatActivity {
                 builder.setNegativeButton("Edit", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // Call edit func
-                        startActivityForResult(new Intent(EditCourses.this, EditCourseAdmin.class), 1); // CHNAGE TO AK's edit code
+                        Intent intent = new Intent(EditCourses.this, EditCourseAdmin.class);
+                        intent.putExtra("course_code", arr.get(i));
+                        startActivityForResult(intent, 1);
                         arr2.notifyDataSetChanged();
+                    }
+                });
+                builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
                     }
                 });
                 AlertDialog dialog = builder.create();
@@ -118,26 +121,26 @@ public class EditCourses extends AppCompatActivity {
                         }
                         else {
                             for (DataSnapshot ds: task.getResult().getChildren()) {
-                                String[] prereqs = task.getResult().child(ds.getKey()).child("prerequisites").getValue().toString().split(",");
-                                int i = 0;
-                                boolean courseInList = false;
-                                while (i < prereqs.length && !courseInList) {
-                                    if (prereqs[i].equals(courseCode)) {
-                                        courseInList = true;
-                                        String newPrereqs = "";
-                                        for (int j = 0; j < prereqs.length; j++) {
-                                            if (j != i) {
-                                                newPrereqs += prereqs[j] + ",";
+                                String[] prereqs = task.getResult().child(ds.getKey()).child("prerequisites").getValue().toString().split(",");                                    int i = 0;
+                                    boolean courseInList = false;
+                                    while (i < prereqs.length && !courseInList) {
+                                        if (prereqs[i].equals(courseCode)) {
+                                            courseInList = true;
+                                            String newPrereqs = "";
+                                            for (int j = 0; j < prereqs.length; j++) {
+                                                if (j != i) {
+                                                    newPrereqs += prereqs[j] + ",";
+                                                }
                                             }
+                                            int upperBound = 0;
+                                            if (!newPrereqs.equals("")) {
+                                                upperBound = newPrereqs.length()-1;
+                                            }
+                                            database.child("admin_courses").child(ds.getKey()).child("prerequisites").setValue(newPrereqs.substring(0, upperBound));
                                         }
-                                        int upperBound = 0;
-                                        if (!newPrereqs.equals("")) {
-                                            upperBound = newPrereqs.length()-1;
-                                        }
-                                        database.child("admin_courses").child(ds.getKey()).child("prerequisites").setValue(newPrereqs.substring(0, upperBound));
+                                        i++;
                                     }
-                                    i++;
-                                }
+
                             }
                             database.child("admin_courses").child(courseCode).removeValue()
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
