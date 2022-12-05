@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -26,10 +28,10 @@ public class AddtakencrsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_addtakencrs);
 
         database = FirebaseDatabase.getInstance();
-        //TODO fix user id with intent.getextra...
 
-        String userid = "101";
-        ref = database.getReference("students").child(userid).child("takenCourse");
+        FirebaseUser ud = FirebaseAuth.getInstance().getCurrentUser();
+        String userid = ud.getUid();
+        ref = database.getReference("students").child(userid).child("taken_courses");
 
 
         editTextcode = (EditText) findViewById(R.id.edTxtCode);
@@ -61,9 +63,13 @@ public class AddtakencrsActivity extends AppCompatActivity {
             }
 
             private void writeNewCrs() {
-                Course course = new Course(editTextcode.getText().toString(),
-                        editTextsessions.getText().toString());
-                String code = editTextcode.getText().toString();
+                String code_input = editTextcode.getText().toString().toUpperCase();
+                String session_input = editTextsessions.getText().toString().toUpperCase();
+//                Course course = new Course(editTextcode.getText().toString(),
+//                        editTextsessions.getText().toString());
+                Course course = new Course(code_input,
+                        session_input);
+                String code = editTextcode.getText().toString().toUpperCase();
                 ref.child(code).setValue(course);
             }
 
