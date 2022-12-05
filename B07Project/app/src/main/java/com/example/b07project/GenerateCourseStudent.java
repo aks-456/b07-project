@@ -85,17 +85,10 @@ public class GenerateCourseStudent extends AppCompatActivity {
         confirmbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             
-
 //
-//                String uid = "";
-//                FirebaseUser user = mAuth.getInstance().getCurrentUser();
-//                if (user != null) {
-//                    uid = user.getUid();
-//                }
-
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("students").child(uid).child("FutureCrs");
+//
+//                FirebaseDatabase database = FirebaseDatabase.getInstance();
+//                DatabaseReference myRef = database.getReference("students").child(uid).child("FutureCrs");
              
 //                FirebaseDatabase database = FirebaseDatabase.getInstance();
 //                user = firebaseauth.getCurrentUser();
