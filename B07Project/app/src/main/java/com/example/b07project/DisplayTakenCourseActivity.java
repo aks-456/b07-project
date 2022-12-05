@@ -49,17 +49,7 @@ public class DisplayTakenCourseActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         FirebaseUser ud = FirebaseAuth.getInstance().getCurrentUser();
         String userid = ud.getUid();
-
-
-
-<<<<<<< Updated upstream
-        ref = database.getReference("students").child(userid).child("taken_courses");
-=======
-
-        FirebaseUser ud = FirebaseAuth.getInstance().getCurrentUser();
-        String userid = ud.getUid();
         ref = database.getReference("students").child(userid).child("takenCourse");
->>>>>>> Stashed changes
         list = new ArrayList<>();
         crsAdapter adapter = new crsAdapter(DisplayTakenCourseActivity.this, R.layout.crs_list, list);
         ref.addValueEventListener(new ValueEventListener() {
