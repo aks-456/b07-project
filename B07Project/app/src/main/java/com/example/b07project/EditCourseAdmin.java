@@ -301,7 +301,7 @@ public class EditCourseAdmin extends AppCompatActivity {
         });
     }
 
-    private void deleteCourse(String courseCode) {
+    private void deleteCourse(String courseCode, String newCodes) {
         Log.e("TAG", courseCode);
 
         mDatabase.child("admin_courses").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -323,6 +323,11 @@ public class EditCourseAdmin extends AppCompatActivity {
                                         newPrereqs += prereqs[j] + ",";
                                     }
                                 }
+                                if(prereqs.length != 0)
+                                {
+                                    newPrereqs+= "," + newCodes;
+                                }
+                                else newPrereqs += newCodes;
                                 int upperBound = 0;
                                 if (!newPrereqs.equals("")) {
                                     upperBound = newPrereqs.length() - 1;
@@ -348,6 +353,7 @@ public class EditCourseAdmin extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     public void writeNewCourse(String name, String code, String preCode, String prerequisites, String offerings) {
@@ -363,7 +369,7 @@ public class EditCourseAdmin extends AppCompatActivity {
                         for (DataSnapshot ds : task.getResult().getChildren()) {
                             if (ds.getKey().equals(preCode)) { // Check if it equals the intent code
                                 //Delete previous course if code has changed
-                                deleteCourse(preCode);
+                                deleteCourse(preCode, code);
                             }
 
                             //Change prerequisites for other courses (if code has changed)
@@ -405,49 +411,52 @@ public class EditCourseAdmin extends AppCompatActivity {
 //                            }
 
                         }
-
                     }
                 }
             });
 
             //Change taken courses (if code has changed)
             //Check if code has changed
-            if (!code.equals(preCode)) {
-                mDatabase.child("students").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DataSnapshot> task) {
-                        if (!task.isSuccessful()) {
-                            Toast.makeText(EditCourseAdmin.this, "There are no courses added to select prerequisites, please enter them manually", Toast.LENGTH_LONG).show();
-                        } else {
-                            for (DataSnapshot ds : task.getResult().getChildren()) {
-                                //For each user
-
-
-//                            ArrayList<String> pre_arr = new ArrayList<String>(Arrays.asList(ds.child("prerequisites").getValue().toString().split(",")));
-//                            String pre_change = "";
-//                            for(int i = 0; i < pre_arr.size(); i++) {
-//                                if(pre_arr.get(i).equals(preCode)) {
-//                                    pre_change+=code;
-//                                } else {
-//                                    pre_change += pre_arr.get(i);
-//                                }
-//                                if(i != pre_arr.size()-1) {
-//                                    pre_change += ",";
-//                                }
+//            if (!code.equals(preCode)) {
+//                mDatabase.child("students").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+//                        if (!task.isSuccessful()) {
+//                            Toast.makeText(EditCourseAdmin.this, "There are no courses added to select prerequisites, please enter them manually", Toast.LENGTH_LONG).show();
+//                        } else {
+//                            for (DataSnapshot ds : task.getResult().getChildren()) {
+//                                //For each user
+//
+//
+////                            ArrayList<String> pre_arr = new ArrayList<String>(Arrays.asList(ds.child("prerequisites").getValue().toString().split(",")));
+////                            String pre_change = "";
+////                            for(int i = 0; i < pre_arr.size(); i++) {
+////                                if(pre_arr.get(i).equals(preCode)) {
+////                                    pre_change+=code;
+////                                } else {
+////                                    pre_change += pre_arr.get(i);
+////                                }
+////                                if(i != pre_arr.size()-1) {
+////                                    pre_change += ",";
+////                                }
+////                            }
+//
 //                            }
-
-                            }
-
-                        }
-                    }
-                });
-
-
-            }
+//
+//                        }
+//                    }
+//                });
+//
+//
+//            }
 
 
             CourseAdmin course = new CourseAdmin(name, code, prerequisites, offerings);
             mDatabase.child("admin_courses").child(code).setValue(course);
+            Intent intent = new Intent();
+            intent.putExtra("key", "value");
+            setResult(RESULT_OK, intent);
+            finish();
 
         }
 

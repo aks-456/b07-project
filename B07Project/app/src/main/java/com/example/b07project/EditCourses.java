@@ -94,9 +94,22 @@ public class EditCourses extends AppCompatActivity {
                         // Call edit func
                         Intent intent = new Intent(EditCourses.this, EditCourseAdmin.class);
                         intent.putExtra("course_code", arr.get(i));
-                        startActivityForResult(intent, 1);
+                        startActivityForResult(intent, i);
                         arr2.notifyDataSetChanged();
+
+
+
                     }
+                    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+                        super.onActivityResult(requestCode, resultCode, data);
+                        if (requestCode == 1) {
+                            if(resultCode == RESULT_OK) {
+                                String strEditText = data.getStringExtra("key");
+
+                                // update your listview in here with new data
+                            }
+                        }
+
                 });
                 builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
@@ -142,8 +155,7 @@ public class EditCourses extends AppCompatActivity {
                                     }
 
                             }
-                            database.child("admin_courses").child(courseCode).removeValue()
-                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            database.child("admin_courses").child(courseCode).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
                                             Toast.makeText(EditCourses.this, "Course Deleted Successfully", Toast.LENGTH_LONG).show();
