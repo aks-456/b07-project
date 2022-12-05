@@ -105,18 +105,18 @@ public class AddCourseAdmin extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         // Initialize string builder
-                        String stringBuilder = new String();
+                        StringBuilder stringBuilder = new StringBuilder();
                         // use for loop
                         for (int j = 0; j < selectedList.size(); j++) {
                             // concat array value
-                           stringBuilder += arr[selectedList.get(j)];
+                            stringBuilder.append(arr[selectedList.get(j)]);
                             // check condition
                             if (j != selectedList.size() - 1) {
-                                stringBuilder+=(",");
+                                stringBuilder.append(", ");
                             }
                         }
                         // set text on textView
-                        textviewpre.setText(stringBuilder);
+                        textviewpre.setText(stringBuilder.toString());
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -153,7 +153,7 @@ public class AddCourseAdmin extends AppCompatActivity {
                 String[] arr = {"Fall", "Winter", "Summer"};
                 selectedOptions2 = new boolean[arr.length];
 
-                builder.setMultiChoiceItems(arr, selectedOptions, new DialogInterface.OnMultiChoiceClickListener() {
+                builder.setMultiChoiceItems(arr, selectedOptions2, new DialogInterface.OnMultiChoiceClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i, boolean b) {
                         // check condition
@@ -172,21 +172,21 @@ public class AddCourseAdmin extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         // Initialize string builder
-                        String stringBuilder = new String();
+                        StringBuilder stringBuilder = new StringBuilder();
                         // use for loop
                         for (int j = 0; j < selectedList2.size(); j++) {
                             // concat array value
-                            stringBuilder += arr[selectedList2.get(j)];
+                            stringBuilder.append(arr[selectedList2.get(j)]);
                             // check condition
                             if (j != selectedList2.size() - 1) {
                                 // When j value  not equal
                                 // to lang list size - 1
                                 // add comma
-                                stringBuilder += ",";
+                                stringBuilder.append(", ");
                             }
                         }
                         // set text on textView
-                        textviewoff.setText(stringBuilder);
+                        textviewoff.setText(stringBuilder.toString());
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -249,24 +249,43 @@ public class AddCourseAdmin extends AppCompatActivity {
                 String strPrerequisites =  textviewpre.getText().toString().trim();
                 String strOfferings =  textviewoff.getText().toString().trim();
 
+                if(strCourseCode.isEmpty()) {
+
+                    etCourseCode.setError("Course code cannot be empty");
+
+                } else if(strCourseName.isEmpty()) {
+
+                    etCourseName.setError("Course name cannot be empty");
+
+                } else if(strOfferings.isEmpty()) {
+
+                    textviewoff.setError("Course offerings cannot be empty");
+                    Toast.makeText(AddCourseAdmin.this, "Course offerings cannot be empty", Toast.LENGTH_LONG).show();
+
+                } else {
+
+                    //Get current signed in user
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    String uid = "";
+                    if (user != null) {
+
+                        // The user's ID, unique to the Firebase project. Do NOT use this value to
+                        // authenticate with your backend server, if you have one. Use
+                        // FirebaseUser.getIdToken() instead.
+                        uid = user.getUid();
+                    }
+                    //Change to uid
+                    writeNewCourse(strCourseName, strCourseCode, strPrerequisites, strOfferings);
+                    Intent intent = new Intent(AddCourseAdmin.this, EditCourses.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+
+                }
+
 //                String strPrerequisites = etPrerequisites.getText().toString().trim();
 //                String strOfferings = etCourseOfferings.getText().toString().trim();
 
-                //Get current signed in user
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                String uid = "";
-                if (user != null) {
 
-                    // The user's ID, unique to the Firebase project. Do NOT use this value to
-                    // authenticate with your backend server, if you have one. Use
-                    // FirebaseUser.getIdToken() instead.
-                    uid = user.getUid();
-                }
-                //Change to uid
-                writeNewCourse(strCourseName, strCourseCode, strPrerequisites, strOfferings);
-                Intent intent = new Intent(AddCourseAdmin.this, EditCourses.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
 
             }
         });
@@ -276,7 +295,7 @@ public class AddCourseAdmin extends AppCompatActivity {
 
     public void writeNewCourse(String name, String code, String prerequisites, String offerings) {
         //Check if the course code already exists
-        Course course = new Course(name, code, prerequisites, offerings);
+        CourseAdmin course = new CourseAdmin(name, code, prerequisites, offerings);
         mDatabase.child("admin_courses").child(code).setValue(course);
     }
 

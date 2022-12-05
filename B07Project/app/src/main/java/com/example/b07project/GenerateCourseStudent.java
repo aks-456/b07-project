@@ -27,7 +27,8 @@ import java.util.Arrays;
 
 public class GenerateCourseStudent extends AppCompatActivity {
 
-    DatabaseReference mDatabase;
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
     Spinner spfuture;
     Button addfubutton, confirmbutton;
     EditText displaytext;
@@ -38,13 +39,19 @@ public class GenerateCourseStudent extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_generate_course_student);
+        mAuth = FirebaseAuth.getInstance();
+        if (mAuth.getCurrentUser() == null) {
+            setContentView(R.layout.activity_generate_course_student);
+        } else {
+            setContentView(R.layout.activity_main);
+        }
 
         spfuture = (Spinner) findViewById(R.id.spinnerfuture);
         addfubutton = (Button) findViewById(R.id.addfubutton);
         confirmbutton = (Button) findViewById(R.id.confirmbutton);
         displaytext = (EditText) findViewById(R.id.displaytext);
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         ArrayList<String> fucrs = new ArrayList<String>();
         fucrs.add("Choose Future Courses");

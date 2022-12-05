@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DisplayTakenCourseActivity">
+    tools:context=".display_taken_course">
 
     <TextView
         android:id="@+id/dtc_title"
@@ -44,17 +44,20 @@
         app:layout_constraintTop_toBottomOf="@+id/takencrslist_view"
         app:layout_constraintVertical_bias="0.525" />
 
-    <Button
-        android:id="@+id/tcbuttonBack"
-        android:layout_width="143dp"
+
+    <EditText
+        android:id="@+id/edTxtCode"
+        android:layout_width="160dp"
         android:layout_height="48dp"
-        android:text="@string/Display_taken_course_title_button_back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.175"
+        android:hint="New Taken Course"
+        android:gravity="center"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/tcbuttonAdd"
+        app:layout_constraintEnd_toEndOf="@+id/tcbuttonAdd"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/takencrslist_view"
-        app:layout_constraintVertical_bias="0.525" />
+        app:layout_constraintVertical_bias="0.473" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
