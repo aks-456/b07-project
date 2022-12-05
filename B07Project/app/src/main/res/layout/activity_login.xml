@@ -94,8 +94,9 @@
         android:textColor="#757575"
         app:layout_constraintBottom_toBottomOf="@+id/toSignUp"
         app:layout_constraintEnd_toStartOf="@+id/toSignUp"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toSignUp"
-        app:layout_constraintVertical_bias="0.413" />
+        app:layout_constraintVertical_bias="0.517" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
