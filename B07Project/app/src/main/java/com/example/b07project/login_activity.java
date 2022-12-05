@@ -59,37 +59,6 @@ public class login_activity extends AppCompatActivity implements LoginContract.L
         String password = text_password.getText().toString();
         LoginInformation info = new LoginInformation(email, password);
         mPresenter.begin(info);
-//        if(TextUtils.isEmpty(email))
-//        {
-//            text_email.setError("Email Cannot Be Empty");
-//            return;
-//        }
-//        if(TextUtils.isEmpty(password))
-//        {
-//            text_password.setError("Password Cannot Be Empty");
-//            return;
-//        }
-//        if(password.length() < 6)
-//        {
-//            text_password.setError("Password must be of atleast length 6");
-//            return;
-//        }
-//        mAuth.signInWithEmailAndPassword(email, password)
-//                .addOnCompleteListener(login_activity.this, new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//
-//                        if (task.isSuccessful()) {
-//                            onSuccess();
-//                            // Sign in success, update UI with the signed-in user's information
-////                            Toast.makeText(login_activity.this, "Authentication failed.",
-////                                    Toast.LENGTH_SHORT).show();
-////                            FirebaseUser user = mAuth.getCurrentUser();
-////                            updateUI(user);
-//                        }
-//                        else onFailed();
-//                    }
-//                });
     }
 });
     }
