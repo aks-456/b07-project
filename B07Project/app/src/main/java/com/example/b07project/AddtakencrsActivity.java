@@ -31,7 +31,12 @@ public class AddtakencrsActivity extends AppCompatActivity {
 
         FirebaseUser ud = FirebaseAuth.getInstance().getCurrentUser();
         String userid = ud.getUid();
+<<<<<<< Updated upstream
         ref = database.getReference("students").child(userid).child("taken_courses");
+=======
+//        String userid = "101";
+        ref = database.getReference("students").child(userid).child("takenCourse");
+>>>>>>> Stashed changes
 
 
         editTextcode = (EditText) findViewById(R.id.edTxtCode);
