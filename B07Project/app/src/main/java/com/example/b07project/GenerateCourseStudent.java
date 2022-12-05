@@ -3,6 +3,7 @@ package com.example.b07project;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +21,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class GenerateCourseStudent extends AppCompatActivity {
 
@@ -28,6 +31,9 @@ public class GenerateCourseStudent extends AppCompatActivity {
     Spinner spfuture;
     Button addfubutton, confirmbutton;
     EditText displaytext;
+
+    FirebaseAuth firebaseauth = FirebaseAuth.getInstance();
+    FirebaseUser user = firebaseauth.getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,11 +85,7 @@ public class GenerateCourseStudent extends AppCompatActivity {
         confirmbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                String uid = "NotNull";
-                if (user == null)
-                    uid = "IsNull";
-
+             
 
 //
 //                String uid = "";
@@ -94,8 +96,23 @@ public class GenerateCourseStudent extends AppCompatActivity {
 
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference myRef = database.getReference("students").child(uid).child("FutureCrs");
+             
+//                FirebaseDatabase database = FirebaseDatabase.getInstance();
+//                user = firebaseauth.getCurrentUser();
+//                String uid = user.getUid();
+//
+//                DatabaseReference myRef = database.getReference("students").child(uid).child("FutureCrs");
                 String txt = displaytext.getText().toString().trim();
-                myRef.setValue(txt);
+                String[] txtar = txt.split(",");
+                ArrayList<String> txtal = new ArrayList<String>(Arrays.asList(txtar));
+                Intent intent = new Intent(GenerateCourseStudent.this, GenerateTimeline.class);
+//                Bundle args = new Bundle();
+//                args.putSerializable("ARRAYLIST",(Serializable)object);
+//                intent.putExtra("BUNDLE",args);
+//                startActivity(intent);
+
+                intent.putExtra("arraylist",txtal);
+                startActivity(intent);
             }
         });
     }
