@@ -46,6 +46,7 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:31.1.0')
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-analytics'
+    testImplementation 'org.mockito:mockito-all:1.10.19'
 //<<<<<<< Updated upstream
     testImplementation 'junit:junit:'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'

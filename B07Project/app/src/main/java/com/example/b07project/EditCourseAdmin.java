@@ -449,7 +449,10 @@ public class EditCourseAdmin extends AppCompatActivity {
 
             CourseAdmin course = new CourseAdmin(name, code, prerequisites, offerings);
             mDatabase.child("admin_courses").child(code).setValue(course);
-
+            Intent intent = new Intent();
+            intent.putExtra("key", "value");
+            setResult(RESULT_OK, intent);
+            finish();
         }
 
 
