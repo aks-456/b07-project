@@ -102,10 +102,10 @@ public class DisplayTakenCourseActivity extends AppCompatActivity {
 
             }
 
-            //TODO: change activity for switching under -> student home page;
+           
 
             public void switchActivitiestodash() {
-                Intent switchActivityIntent = new Intent(DisplayTakenCourseActivity.this, AddtakencrsActivity.class);
+                Intent switchActivityIntent = new Intent(DisplayTakenCourseActivity.this, StudentHomePage.class);
                 startActivity(switchActivityIntent);
             }
         });
