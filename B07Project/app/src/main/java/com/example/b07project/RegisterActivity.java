@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -45,6 +46,21 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 email = emailBox.getText().toString();
                 password = passwordBox.getText().toString();
+                String email = emailBox.getText().toString();
+                String password = passwordBox.getText().toString();
+
+                if (TextUtils.isEmpty(email)) {
+                    emailBox.setError("Email Cannot Be Empty");
+                    return;
+                }
+                if (TextUtils.isEmpty(password)) {
+                    passwordBox.setError("Password Cannot Be Empty");
+                    return;
+                }
+                if (password.length() < 6) {
+                    passwordBox.setError("Password Must Be At least 6 Characters Long");
+                    return;
+                }
                 createAccount(email, password, false);
             }
         });
@@ -53,7 +69,23 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 email = emailBox.getText().toString();
                 password = passwordBox.getText().toString();
+                String email = emailBox.getText().toString();
+                String password = passwordBox.getText().toString();
+
+                if (TextUtils.isEmpty(email)) {
+                    emailBox.setError("Email Cannot Be Empty");
+                    return;
+                }
+                if (TextUtils.isEmpty(password)) {
+                    passwordBox.setError("Password Cannot Be Empty");
+                    return;
+                }
+                if (password.length() < 6) {
+                    passwordBox.setError("Password Must Be At least 6 Characters Long");
+                    return;
+                }
                 createAccount(email, password, true);
+
             }
         });
     }
