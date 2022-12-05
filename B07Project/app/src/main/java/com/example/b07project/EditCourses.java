@@ -57,7 +57,7 @@ public class EditCourses extends AppCompatActivity {
                 else {
                     for(DataSnapshot ds : task.getResult().getChildren()) {
 
-                        String key =ds.getKey() + "\n"+ ds.child("name").getValue() + "\nOFFERED: " + ds.child("offerings").getValue() + "\nPREREQUISITES: " + ds.child("prerequisites").getValue();
+                        String key = ds.getKey() + "\n"+ ds.child("name").getValue() + "\nOFFERED: " + ds.child("offerings").getValue() + "\nPREREQUISITES: " + ds.child("prerequisites").getValue();
                         arr.add(key);
                     }
                     listView.setAdapter(arr2);
