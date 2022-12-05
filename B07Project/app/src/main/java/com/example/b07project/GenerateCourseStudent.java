@@ -34,7 +34,7 @@ public class GenerateCourseStudent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
-        if (mAuth.getCurrentUser() == null) {
+        if (mAuth.getCurrentUser() != null) {
             setContentView(R.layout.activity_generate_course_student);
         } else {
             setContentView(R.layout.activity_main);

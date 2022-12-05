@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class login_activity extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    private DatabaseReference database;
+    private DatabaseReference mDatabase;
     EditText text_email, text_password;
     Button text_signup;
     Button text_signuppage;
@@ -38,7 +38,7 @@ public class login_activity extends AppCompatActivity {
          text_signup = (Button)findViewById(R.id.activity_switcher_button);
         text_signuppage = (Button)findViewById(R.id.toSignUp);
          mAuth = FirebaseAuth.getInstance();
-        database = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         text_signuppage.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -89,51 +89,97 @@ public class login_activity extends AppCompatActivity {
     }
 });
     }
+
     private void updateUI(FirebaseUser user){
         if(user != null) {
             Toast.makeText(login_activity.this, "Verification Successful",
                     Toast.LENGTH_SHORT).show();
-            int check = 0;
-            database.child("Admin").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DataSnapshot> task) {
-                    if (!task.isSuccessful()) {
-                        Toast.makeText(login_activity.this, "There Are No Admins", Toast.LENGTH_LONG).show();
-                    }
-                    else {
-                        for(DataSnapshot ds : task.getResult().getChildren()) {
-                            if(ds.getKey().toString().equals(user.getUid().toString()))
-                            {
-                                Intent intent = new Intent(login_activity.this, EditCourses.class);
-                                intent.putExtra("key",user.getUid());
-                                startActivity(intent);
-                            }
-                        }
-                    }
-
-                }
-            });
-            Intent intent = new Intent(login_activity.this, EditCourseAdmin.class); //CHange to Student Homepage
-            intent.putExtra("key",user.getUid());
-            startActivity(intent);
+            onStart();
         }
         return;
     }
 
+
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-           reload(currentUser);
-        }
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user==null)
+            return;
+        String uid = "";
+        uid = user.getUid();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Admin").child(uid);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        String finalUid = uid;
+        mDatabase.child("Admin").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Toast.makeText(login_activity.this, "There are no admins", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    for(DataSnapshot ds : task.getResult().getChildren()) {
+                        if(finalUid.equals(ds.getKey().toString())) {
+                            Intent intent = new Intent(login_activity.this, EditCourses.class);
+                            startActivity(intent);
+                            return;
+                        }
+                    }
+                    Intent intent = new Intent(login_activity.this, StudentHomePage.class);
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
-    private void reload(FirebaseUser user) {
-        Intent intent = new Intent(login_activity.this, EditCourses.class); //CHANGE TO THE HOMEPAGE
-        intent.putExtra("key",user.getUid());
-        startActivity(intent);
-    }
+
+//    private void updateUI(FirebaseUser user){
+//        if(user != null) {
+//            Toast.makeText(login_activity.this, "Verification Successful",
+//                    Toast.LENGTH_SHORT).show();
+//            int check = 0;
+//            database.child("Admin").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+//                @Override
+//                public void onComplete(@NonNull Task<DataSnapshot> task) {
+//                    if (!task.isSuccessful()) {
+//                        Toast.makeText(login_activity.this, "There Are No Admins", Toast.LENGTH_LONG).show();
+//                    }
+//                    else {
+//                        for(DataSnapshot ds : task.getResult().getChildren()) {
+//                            if(ds.getKey().toString().equals(user.getUid().toString()))
+//                            {
+//                                Intent intent = new Intent(login_activity.this, EditCourses.class);
+//                                intent.putExtra("key",user.getUid());
+//                                startActivity(intent);
+//                            }
+//                        }
+//                    }
+//
+//                }
+//            });
+//            Intent intent = new Intent(login_activity.this, EditCourseAdmin.class); //CHange to Student Homepage
+//            intent.putExtra("key",user.getUid());
+//            startActivity(intent);
+//        }
+//        return;
+//    }
+//
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        // Check if user is signed in (non-null) and update UI accordingly.
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        if(currentUser != null){
+//           reload(currentUser);
+//        }
+//    }
+//
+//    private void reload(FirebaseUser user) {
+//        Intent intent = new Intent(login_activity.this, EditCourses.class); //CHANGE TO THE HOMEPAGE
+//        intent.putExtra("key",user.getUid());
+//        startActivity(intent);
+//    }
 
 }
