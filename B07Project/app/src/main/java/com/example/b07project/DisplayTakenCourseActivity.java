@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.ListView;
 
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,6 +34,7 @@ public class DisplayTakenCourseActivity extends AppCompatActivity {
     List<Course> list;
     Course course;
     Button btnAdd;
+    Button btnBac;
 
 
 
@@ -44,10 +47,19 @@ public class DisplayTakenCourseActivity extends AppCompatActivity {
 
         listview = (ListView) findViewById(R.id.takencrslist_view);
         database = FirebaseDatabase.getInstance();
-        //TODO fix user id with intent.getextra...
+        FirebaseUser ud = FirebaseAuth.getInstance().getCurrentUser();
+        String userid = ud.getUid();
 
-        String userid = "101";
+
+
+<<<<<<< Updated upstream
         ref = database.getReference("students").child(userid).child("taken_courses");
+=======
+
+        FirebaseUser ud = FirebaseAuth.getInstance().getCurrentUser();
+        String userid = ud.getUid();
+        ref = database.getReference("students").child(userid).child("takenCourse");
+>>>>>>> Stashed changes
         list = new ArrayList<>();
         crsAdapter adapter = new crsAdapter(DisplayTakenCourseActivity.this, R.layout.crs_list, list);
         ref.addValueEventListener(new ValueEventListener() {
@@ -88,6 +100,24 @@ public class DisplayTakenCourseActivity extends AppCompatActivity {
                 startActivity(switchActivityIntent);
             }
         });
+
+        btnBac = (Button) findViewById(R.id.tcbuttonBack);
+        btnBac.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switchActivitiestodash();
+
+            }
+
+            //TODO: change activity for switching under -> student home page;
+
+            public void switchActivitiestodash() {
+                Intent switchActivityIntent = new Intent(DisplayTakenCourseActivity.this, AddtakencrsActivity.class);
+                startActivity(switchActivityIntent);
+            }
+        });
+
+
 
 
     }

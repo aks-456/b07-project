@@ -16,6 +16,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
 //    private AppBarConfiguration appBarConfiguration;
@@ -35,13 +37,23 @@ public class RegisterActivity extends AppCompatActivity {
         EditText passwordBox = findViewById(R.id.editTextTextPassword);
         mAuth = FirebaseAuth.getInstance();
 
-        Button button = findViewById(R.id.register_button);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button button_stud = findViewById(R.id.register_button);
+        Button button_adm = findViewById(R.id.register_button_admin);
+
+        button_stud.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 email = emailBox.getText().toString();
-                 password = passwordBox.getText().toString();
-                createAccount(email, password);
+                email = emailBox.getText().toString();
+                password = passwordBox.getText().toString();
+                createAccount(email, password, false);
+            }
+        });
+        button_adm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                email = emailBox.getText().toString();
+                password = passwordBox.getText().toString();
+                createAccount(email, password, true);
             }
         });
     }
@@ -56,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
-    private void createAccount(String email, String password) {
+    private void createAccount(String email, String password, Boolean admin) {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -65,6 +77,16 @@ public class RegisterActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            if (admin){
+                                String uid = "";
+                                FirebaseUser ud = FirebaseAuth.getInstance().getCurrentUser();
+                                if (ud != null) {
+                                    uid = ud.getUid();
+                                }
+                                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                DatabaseReference myRef = database.getReference("Admin").child(uid);
+                                myRef.setValue("True");
+                            }
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.

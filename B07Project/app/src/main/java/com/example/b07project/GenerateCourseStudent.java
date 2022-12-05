@@ -24,8 +24,7 @@ import java.util.ArrayList;
 
 public class GenerateCourseStudent extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
-    private DatabaseReference mDatabase;
+    DatabaseReference mDatabase;
     Spinner spfuture;
     Button addfubutton, confirmbutton;
     EditText displaytext;
@@ -33,19 +32,13 @@ public class GenerateCourseStudent extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mAuth = FirebaseAuth.getInstance();
-        if (mAuth.getCurrentUser() == null) {
-            setContentView(R.layout.activity_generate_course_student);
-        } else {
-            setContentView(R.layout.activity_main);
-        }
+        setContentView(R.layout.activity_generate_course_student);
 
         spfuture = (Spinner) findViewById(R.id.spinnerfuture);
         addfubutton = (Button) findViewById(R.id.addfubutton);
         confirmbutton = (Button) findViewById(R.id.confirmbutton);
         displaytext = (EditText) findViewById(R.id.displaytext);
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         ArrayList<String> fucrs = new ArrayList<String>();
         fucrs.add("Choose Future Courses");
@@ -86,16 +79,22 @@ public class GenerateCourseStudent extends AppCompatActivity {
         confirmbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String uid = "";
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                if (user != null) {
-                    uid = user.getUid();
-                }
+                String uid = "NotNull";
+                if (user == null)
+                    uid = "IsNull";
+
+
+//
+//                String uid = "";
+//                FirebaseUser user = mAuth.getInstance().getCurrentUser();
+//                if (user != null) {
+//                    uid = user.getUid();
+//                }
 
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("Student").child(uid).child("FutureCrs");
+                DatabaseReference myRef = database.getReference("students").child(uid).child("FutureCrs");
                 String txt = displaytext.getText().toString().trim();
-//
                 myRef.setValue(txt);
             }
         });
