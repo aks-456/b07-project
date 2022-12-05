@@ -24,6 +24,10 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".GenerateCourseStudent"
+            android:exported="false">
+        </activity>
+        <activity
             android:name=".DisplayTakenCourseActivity"
             android:exported="true">
             <meta-data
