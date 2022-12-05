@@ -29,7 +29,7 @@ public class GenerateCourseStudent extends AppCompatActivity {
 
     DatabaseReference mDatabase;
     Spinner spfuture;
-    Button addfubutton, confirmbutton;
+    Button addfubutton, confirmbutton, backbtn;
     EditText displaytext;
 
     FirebaseAuth firebaseauth = FirebaseAuth.getInstance();
@@ -43,6 +43,7 @@ public class GenerateCourseStudent extends AppCompatActivity {
         spfuture = (Spinner) findViewById(R.id.spinnerfuture);
         addfubutton = (Button) findViewById(R.id.addfubutton);
         confirmbutton = (Button) findViewById(R.id.confirmbutton);
+        backbtn = (Button) findViewById(R.id.backbtn);
         displaytext = (EditText) findViewById(R.id.displaytext);
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -79,6 +80,14 @@ public class GenerateCourseStudent extends AppCompatActivity {
                     }
                     displaytext.setText(newer);
                 }
+            }
+        });
+
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(GenerateCourseStudent.this, StudentHomePage.class);
+                startActivity(intent);
             }
         });
 

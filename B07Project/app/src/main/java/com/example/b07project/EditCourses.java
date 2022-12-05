@@ -132,6 +132,7 @@ public class EditCourses extends AppCompatActivity {
                                                     newPrereqs += prereqs[j] + ",";
                                                 }
                                             }
+
                                             int upperBound = 0;
                                             if (!newPrereqs.equals("")) {
                                                 upperBound = newPrereqs.length()-1;
