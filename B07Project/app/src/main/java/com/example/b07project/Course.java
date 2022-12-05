@@ -27,6 +27,11 @@ public class Course{
 
         }
 
+    public Course(String code, String sessions) {
+        this.code = code;
+        this.sessions = sessions;
+    }
+
 
     public String getCode() {
         return code;

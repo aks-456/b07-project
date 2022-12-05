@@ -28,6 +28,7 @@
     <string name="Display_taken_course_title">Taken Course</string>
     <string name="Display_taken_course_title_button_add">Add</string>
     <string name="Display_taken_course_title_button_del">Delete</string>
+    <string name="Display_taken_course_title_button_back">Back</string>
     <string name="confirm1">Confirm</string>
     <string name="back_course_button">Back</string>
     <string name="edit_courses_button">Edit</string>
