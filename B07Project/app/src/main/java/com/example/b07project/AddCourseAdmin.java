@@ -105,18 +105,18 @@ public class AddCourseAdmin extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         // Initialize string builder
-                        String stringBuilder = new String();
+                        StringBuilder stringBuilder = new StringBuilder();
                         // use for loop
                         for (int j = 0; j < selectedList.size(); j++) {
                             // concat array value
-                           stringBuilder += arr[selectedList.get(j)];
+                            stringBuilder.append(arr[selectedList.get(j)]);
                             // check condition
                             if (j != selectedList.size() - 1) {
-                                stringBuilder+=(",");
+                                stringBuilder.append(", ");
                             }
                         }
                         // set text on textView
-                        textviewpre.setText(stringBuilder);
+                        textviewpre.setText(stringBuilder.toString());
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -172,21 +172,21 @@ public class AddCourseAdmin extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         // Initialize string builder
-                        String stringBuilder = new String();
+                        StringBuilder stringBuilder = new StringBuilder();
                         // use for loop
                         for (int j = 0; j < selectedList2.size(); j++) {
                             // concat array value
-                            stringBuilder += arr[selectedList2.get(j)];
+                            stringBuilder.append(arr[selectedList2.get(j)]);
                             // check condition
                             if (j != selectedList2.size() - 1) {
                                 // When j value  not equal
                                 // to lang list size - 1
                                 // add comma
-                                stringBuilder += ",";
+                                stringBuilder.append(", ");
                             }
                         }
                         // set text on textView
-                        textviewoff.setText(stringBuilder);
+                        textviewoff.setText(stringBuilder.toString());
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

@@ -10,25 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.B07Project">
         <activity
-            android:name=".StudentHomePage"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".AddtakencrsActivity"
-            android:exported="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".GenerateCourseStudent"
-            android:exported="false">
-        </activity>
-        <activity
-            android:name=".DisplayTakenCourseActivity"
+            android:name=".display_taken_course"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
@@ -36,7 +18,9 @@
         </activity>
         <activity
             android:name=".EditCourses"
-            android:exported="false" />
+            android:exported="false"
+            />
+
         <activity
             android:name=".RegisterActivity"
             android:exported="false">
@@ -44,19 +28,22 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".EditCourseAdmin"
-            android:exported="false" />
+                <activity android:name=".EditCourseAdmin"
+            android:exported="false"/>
         <activity
             android:name=".login_activity"
-            android:exported="true">
+            android:exported="true"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity
+
+
+    <activity
             android:name=".GenerateTimeline"
             android:exported="false" />
         <activity
@@ -68,6 +55,7 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+
         </activity>
     </application>
 
