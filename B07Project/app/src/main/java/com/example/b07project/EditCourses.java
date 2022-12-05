@@ -85,7 +85,16 @@ public class EditCourses extends AppCompatActivity {
                         Intent intent = new Intent(EditCourses.this, EditCourseAdmin.class);
                         intent.putExtra("course_code", arr.get(i));
                         startActivityForResult(intent, 1);
+
                         arr2.notifyDataSetChanged();
+                    }
+                    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+                        EditCourses.super.onActivityResult(requestCode, resultCode, data);
+                        if (requestCode == 1) {
+                            if(resultCode == RESULT_OK) {
+                                startActivity(getIntent());
+                            }
+                        }
                     }
                 });
                 builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
