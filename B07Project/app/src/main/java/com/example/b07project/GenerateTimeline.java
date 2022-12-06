@@ -52,7 +52,8 @@ public class GenerateTimeline extends AppCompatActivity {
 
             HashMap<String, String> sessionOfferings = new HashMap<String, String>();
 
-            String uid = "8x12b03lV6QJGDlkXzlBquuiY753";
+            FirebaseUser ud = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = ud.getUid();
             ArrayList<String> takenCourses = new ArrayList<String>();
             takenCourses.add("CSCB07");
 
@@ -66,7 +67,7 @@ public class GenerateTimeline extends AppCompatActivity {
                         for(DataSnapshot ds : task.getResult().getChildren()) {
                             String key = ds.getKey();
                             //101 -- replace with current user
-                            if(key.equals("101")) {
+                            if(key.equals(uid)) {
 
                                 String [] taken_arr = ds.child("takenCourse").getValue().toString().split(",");
                                 takenCourses.addAll(Arrays.asList(taken_arr));
