@@ -27,6 +27,7 @@ public class EditCourses extends AppCompatActivity {
     private DatabaseReference database;
     Button btn;
     Button add_course; // ADD COURSES BUTTON
+    Button refresh;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +37,7 @@ public class EditCourses extends AppCompatActivity {
         add_course = findViewById(R.id.button3);
         ArrayAdapter<String> arr2 = new ArrayAdapter<>(this, R.layout.textviewlayout, arr);
         database = FirebaseDatabase.getInstance().getReference();
+        refresh = findViewById(R.id.refresh);
         database.child("admin_courses").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -50,6 +52,13 @@ public class EditCourses extends AppCompatActivity {
                     }
                     listView.setAdapter(arr2);
                 }
+            }
+        });
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(EditCourses.this, EditCourses.class));
+                finish();
             }
         });
         add_course.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +76,7 @@ public class EditCourses extends AppCompatActivity {
                 startActivity(new Intent(EditCourses.this, login_activity.class));
             }
         });
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -75,8 +85,9 @@ public class EditCourses extends AppCompatActivity {
                 builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         deleteCourse(arr.get(i).split("\n")[0]);
+                        startActivity(new Intent(EditCourses.this, EditCourses.class));
                         arr2.notifyDataSetChanged();
-                        finish();
+
                     }
                 });
                 builder.setNegativeButton("Edit", new DialogInterface.OnClickListener() {
@@ -84,18 +95,26 @@ public class EditCourses extends AppCompatActivity {
                         // Call edit func
                         Intent intent = new Intent(EditCourses.this, EditCourseAdmin.class);
                         intent.putExtra("course_code", arr.get(i));
-                        startActivityForResult(intent, 1);
-
+                        startActivity(intent);
                         arr2.notifyDataSetChanged();
+                        listView.setAdapter(arr2);
+//                        startActivity(new Intent(EditCourses.this, EditCourses.class));
                     }
-                    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-                        EditCourses.super.onActivityResult(requestCode, resultCode, data);
-                        if (requestCode == 1) {
-                            if(resultCode == RESULT_OK) {
-                                startActivity(getIntent());
-                            }
-                        }
-                    }
+//                    public void onActivityResult(int requestCode, int resultCode, Intent data)
+//                    {
+//                        EditCourses.super.onActivityResult(requestCode, resultCode, data);
+//                        if(requestCode == 1)
+//                        {
+//                            if(resultCode == RESULT_OK)
+//                            {
+//                                arr2.notifyDataSetChanged();
+//
+//                            }
+//                        }
+//                        startActivity(new Intent(EditCourses.this, EditCourses.class));
+//
+//                    }
+
                 });
                 builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override

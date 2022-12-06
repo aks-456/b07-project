@@ -2,8 +2,8 @@ package com.example.b07project;
 
 public class LoginPresenter implements LoginContract.LoginListener{
 
-    private LoginContract.LoginView login_view;
-    private LoginInt login_interactor;
+    private LoginContract.LoginView login_view; // view field
+    private LoginInt login_interactor; // model field
 
     public LoginPresenter(LoginContract.LoginView login_view)
     {

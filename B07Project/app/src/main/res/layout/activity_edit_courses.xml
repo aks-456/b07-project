@@ -17,7 +17,7 @@
         android:backgroundTint="#8D50E7"
         android:fontFamily="sans-serif-condensed-medium"
         android:gravity="center"
-        android:text="Admin Home"
+        android:text="@string/admin_home"
         android:textColor="@color/white"
         android:textSize="45sp" />
 
@@ -33,7 +33,6 @@
         android:layout_width="wrap_content"
         android:layout_height="331dp"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="20dp"
         android:background="@drawable/background_list_view"
         android:backgroundTint="#3B939A9E"
         android:cacheColorHint="#673AB7"
@@ -43,6 +42,18 @@
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/refresh"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#008C8C8C"
+        android:drawableLeft="@drawable/ic_baseline_refresh_24"
+        android:paddingStart="10dp"
+        android:text="@string/refresh"
+        android:textAlignment="center"
+        android:textColor="#000000" />
 
     <Button
         android:id="@+id/button3"
@@ -63,7 +74,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/background_button"
         android:drawableLeft="@drawable/ic_baseline_arrow_back_24"
-        android:text="Logout"
+        android:text="@string/logout"
         android:textAlignment="center" />
 
 </LinearLayout>

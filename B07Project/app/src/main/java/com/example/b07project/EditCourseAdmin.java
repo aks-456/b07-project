@@ -301,6 +301,8 @@ public class EditCourseAdmin extends AppCompatActivity {
         });
     }
 
+
+
     private void deleteCourse(String courseCode, String preCode) {
         Log.e("TAG", courseCode);
 
@@ -365,6 +367,7 @@ public class EditCourseAdmin extends AppCompatActivity {
                             if (ds.getKey().equals(preCode)) { // Check if it equals the intent code
                                 //Delete previous course if code has changed
                                 deleteCourse(preCode, code);
+
                             }
 
                             //Change prerequisites for other courses (if code has changed)
@@ -449,10 +452,6 @@ public class EditCourseAdmin extends AppCompatActivity {
 
             CourseAdmin course = new CourseAdmin(name, code, prerequisites, offerings);
             mDatabase.child("admin_courses").child(code).setValue(course);
-            Intent intent = new Intent();
-            intent.putExtra("key", "value");
-            setResult(RESULT_OK, intent);
-            finish();
         }
 
 

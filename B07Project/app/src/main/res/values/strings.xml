@@ -45,4 +45,7 @@
     <string name="click_to_add_offerings">Click To Add Offerings</string>
     <string name="done">Done</string>
     <string name="course_code">Course Code</string>
+    <string name="admin_home">Admin Home</string>
+    <string name="logout">Logout</string>
+    <string name="refresh">Refresh</string>
 </resources>
