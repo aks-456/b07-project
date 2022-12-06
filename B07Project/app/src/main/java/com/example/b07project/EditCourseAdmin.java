@@ -301,7 +301,7 @@ public class EditCourseAdmin extends AppCompatActivity {
         });
     }
 
-    private void deleteCourse(String courseCode) {
+    private void deleteCourse(String courseCode, String preCode) {
         Log.e("TAG", courseCode);
 
         mDatabase.child("admin_courses").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -323,6 +323,7 @@ public class EditCourseAdmin extends AppCompatActivity {
                                         newPrereqs += prereqs[j] + ",";
                                     }
                                 }
+                                newPrereqs += preCode + ",";
                                 int upperBound = 0;
                                 if (!newPrereqs.equals("")) {
                                     upperBound = newPrereqs.length() - 1;
@@ -363,7 +364,7 @@ public class EditCourseAdmin extends AppCompatActivity {
                         for (DataSnapshot ds : task.getResult().getChildren()) {
                             if (ds.getKey().equals(preCode)) { // Check if it equals the intent code
                                 //Delete previous course if code has changed
-                                deleteCourse(preCode);
+                                deleteCourse(preCode, code);
                             }
 
                             //Change prerequisites for other courses (if code has changed)
@@ -448,7 +449,10 @@ public class EditCourseAdmin extends AppCompatActivity {
 
             CourseAdmin course = new CourseAdmin(name, code, prerequisites, offerings);
             mDatabase.child("admin_courses").child(code).setValue(course);
-
+            Intent intent = new Intent();
+            intent.putExtra("key", "value");
+            setResult(RESULT_OK, intent);
+            finish();
         }
 
 

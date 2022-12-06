@@ -7,6 +7,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import static org.mockito.Mockito.when;
 
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
