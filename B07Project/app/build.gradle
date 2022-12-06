@@ -38,6 +38,14 @@ task wrapper(type: Wrapper){
 
 tasks.register("prepareKotlinBuildScriptModel"){}
 
+//for solving the error 'method.. not mocked'
+android {
+    // ...
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.4.1'
