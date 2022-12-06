@@ -104,61 +104,30 @@ public class GenerateTimeline extends AppCompatActivity {
 //                }
 //            }
 //        });
-        for (int i = 0; i < courses.size(); i++) {
-            ArrayList<String> prereqs = new ArrayList<String>();
-            ArrayList<String> newCourses = new ArrayList<String>();
-            prereqs.add(courses.get(i));
-
-            ArrayList<String> timelineCourses = new ArrayList<String>();
-            //.e("LENGTH", String.valueOf(getCourses(prereqs, newCourses).size()));
-            getCourses(prereqs, newCourses);
-            /*for (int x = 0; x < timelineCourses.size(); x++) {
-                Log.e("TASK" + x, timelineCourses.get(x));
-            }*/
-        }
-    }
-
-
-    protected void getCourses(ArrayList<String> prereqs, ArrayList<String> newCourses) {
-
-        /*mDatabase.child("admin_courses").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        mDatabase.child("admin_courses").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
                 }
                 else {
-                    int bound = prereqs.size();
-                    int ctr = 0;
-                    while (ctr < bound) {
+                    for (int i = 0; i < courses.size(); i++) {
+                        ArrayList<String> prereqs = new ArrayList<String>();
+                        ArrayList<String> newCourses = new ArrayList<String>();
+                        prereqs.add(courses.get(i));
 
-                        // add prereqs to new courses
-                        newCourses.add(prereqs.get(0));
-
-                        for (DataSnapshot ds : task.getResult().getChildren()) {
-                            String key = ds.getKey();
-//                            if (key.equals(current_course)) {
-//
-//                                String[] pre_arr = ds.child("prerequisites").getValue().toString().split(",");
-//                                prereq_arr.addAll(Arrays.asList(pre_arr));
-//
-//                            }
-                            if (prereqs != null && key.equals(prereqs.get(0))) {
-                                String[] pre_arr = ds.child("prerequisites").getValue().toString().split(",");
-
-                                for (int j = 0; j < pre_arr.length; j++) {
-                                    prereqs.add(pre_arr[j]);
-                                }
-
-                                prereqs.remove(0);
-                                break;
-                            }
-                        }
-                        //System.out.println(prereqs.size());
-                        ctr++;
+                        ArrayList<String> timelineCourses = new ArrayList<String>();
+                        //.e("LENGTH", String.valueOf(getCourses(prereqs, newCourses).size()));
+                        getCourses(prereqs, newCourses, task);
                     }
+
+                    Log.e("TAG10", "yes");
                 }
             }
-        });*/
+        });
+    }
+
+
+    protected void getCourses(ArrayList<String> prereqs, ArrayList<String> newCourses, Task<DataSnapshot> coursesTask) {
 
         if (prereqs.isEmpty()) {
             // remove duplicate courses
@@ -175,37 +144,28 @@ public class GenerateTimeline extends AppCompatActivity {
             Log.e("TASK", "---------------");
         }
         else {
-            mDatabase.child("admin_courses").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DataSnapshot> task) {
-                    if (!task.isSuccessful()) {
-                    }
-                    else {
-                        ArrayList<String> newPrereqs = new ArrayList<String>();
 
-                        for (int i = 0; i < prereqs.size(); i++) {
+            ArrayList<String> newPrereqs = new ArrayList<String>();
 
-                            // add prereqs to new courses
-                            newCourses.add(prereqs.get(i));
+            for (int i = 0; i < prereqs.size(); i++) {
 
-                            // get prereqs of each course in list and replace with their prereqs
-                            for (DataSnapshot ds : task.getResult().getChildren()) {
-                                String key = ds.getKey();
-                                if (key.equals(prereqs.get(i))) {
-                                    String[] pre_arr = ds.child("prerequisites").getValue().toString().split(",");
-                                    for (int j = 0; j < pre_arr.length; j++) {
-                                        if (!pre_arr[j].isEmpty()){
-                                            newPrereqs.add(pre_arr[j].trim());
-                                        }
-                                    }
-                                }
+                // add prereqs to new courses
+                newCourses.add(prereqs.get(i));
+
+                for (DataSnapshot ds: coursesTask.getResult().getChildren()) {
+                    String key = ds.getKey();
+                    if (key.equals(prereqs.get(i))) {
+                        String[] pre_arr = ds.child("prerequisites").getValue().toString().split(",");
+                        for (int j = 0; j < pre_arr.length; j++) {
+                            if (!pre_arr[j].isEmpty()){
+                                newPrereqs.add(pre_arr[j].trim());
                             }
                         }
-
-                        getCourses(newPrereqs, newCourses);
                     }
                 }
-            });
+            }
+
+            getCourses(newPrereqs, newCourses, coursesTask);
         }
     }
 }
