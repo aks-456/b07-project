@@ -54,7 +54,7 @@ public class GenerateCourseStudent extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
-                    Toast.makeText(GenerateCourseStudent.this, "There are no courses added to select prerequisites, please enter them manually", Toast.LENGTH_LONG).show();
+                    Toast.makeText(GenerateCourseStudent.this, "There are no courses", Toast.LENGTH_LONG).show();
                 } else {
                     for (DataSnapshot ds : task.getResult().getChildren()) {
                         String key = ds.getKey();
