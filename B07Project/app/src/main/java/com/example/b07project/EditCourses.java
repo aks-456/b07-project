@@ -59,6 +59,7 @@ public class EditCourses extends AppCompatActivity {
             public void onClick(View view) {
                 startActivity(new Intent(EditCourses.this, EditCourses.class));
                 finish();
+                overridePendingTransition(0, 0);
             }
         });
         add_course.setOnClickListener(new View.OnClickListener() {
